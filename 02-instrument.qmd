@@ -37,6 +37,23 @@ The versioned implementation places a `[MASK]` marker at each option position. A
 
 Several questions about the same state become separate model rows that can share a batched forward call. The employment question does not consume the management question's answer. Each is conditioned on the original state and its own question. That distinction matters if I want an answer to depend on an earlier result: the dependency must be implemented in the surrounding pipeline or in a changed architecture. Batching independent rows does not create deliberation between them. [Batching implementation](https://github.com/NandhaKishorM/laya/blob/v0.3.21/laya/agent.py)
 
+<!-- block: ch02-diagram-01 -->
+
+[]{#ch02-diagram-01}
+
+
+```{mermaid}
+flowchart TD
+    accTitle: Option markers produce a bounded score distribution
+    accDescr: The request includes option-position markers before encoding. The encoder and decision layers produce contextual representations from those positions, which are gathered into option scores and normalized with softmax.
+    Request["Request with option markers"] --> Encoder["Encoder and decision layers"]
+    Encoder --> Markers["Gather marker representations"]
+    Markers --> Scores["One score per option"]
+    Scores --> Softmax["Distribution over options"]
+```
+
+Diagram: The marker positions address option readouts; softmax ranks the supplied choices but does not establish that the choice is supported by evidence.
+
 <!-- block: ch02-006 -->
 
 []{#ch02-006}
@@ -64,6 +81,23 @@ Confidence needs equally careful naming. In the inspected implementation, `answe
 
 
 I can now refine the backend analogy. This is a learned measurement service with a serializer, limited input budget, trained readout and domain-dependent score behavior. Type checking catches malformed use of the interface. Task evaluation determines whether the measurement is useful. Keeping those checks separate lets me diagnose a failure without pretending every wrong answer is a parsing bug or every clean response is reliable.
+
+<!-- block: ch02-diagram-02 -->
+
+[]{#ch02-diagram-02}
+
+
+```{mermaid}
+flowchart TD
+    accTitle: Interface checks and task evaluation answer different questions
+    accDescr: The serializer fits a request to its input budget, then the model returns an output. Shape validation checks interface form; task evaluation checks whether the measurement is useful.
+    Request["Request"] --> Serializer["Serialize within budget"]
+    Serializer --> Model["Learned readout"]
+    Model --> Shape["Validate output shape"]
+    Shape --> Task["Evaluate task value"]
+```
+
+Diagram: A valid response shape establishes interface compliance; only task evaluation tests whether the measurement helps.
 
 <!-- block: ch02-010 -->
 

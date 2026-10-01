@@ -92,3 +92,22 @@ The next inexpensive tests would isolate the target answer, ask atomic dimension
 
 
 Spark made the cost question more concrete. Faster completion can reduce one expense while invalid provenance and mistaken targets increase review. The useful comparison is cost per sufficiently reliable, accepted annotation, with failed calls included. [Chapter 8](08-supervision.qmd) explains why preserving those failures creates a better candidate corpus than keeping only the successful labels.
+
+<!-- block: ch07-diagram-01 -->
+
+[]{#ch07-diagram-01}
+
+
+```{mermaid}
+flowchart TD
+accTitle: Spark pilot outcomes by mode
+accDescr: Twelve attempts in each mode yielded one accepted thinking output with eleven budget failures, and seven accepted nonthinking outputs with five citation-invalid outputs.
+    A["Same task and rubric"] --> B["Thinking"]
+    B --> C["1 accepted of 12"]
+    B --> D["11 budget failures"]
+    A --> E["Nonthinking"]
+    E --> F["7 accepted of 12"]
+    E --> G["5 citation-invalid"]
+```
+
+Diagram: This records pipeline outcomes by mode; semantic agreement was computed only on the selected valid nonthinking outputs.

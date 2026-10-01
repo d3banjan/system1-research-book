@@ -30,6 +30,24 @@ I would begin with the consuming operation. What happens when this observation i
 
 Then I would freeze the task, inputs, source identities, rubric, native request, output validation and baselines. Deterministic checks and constant/deferral strategies deserve explicit comparison. Candidate selection and threshold tuning belong on development groups. Only after selection is locked should untouched confirmation groups assess the proposed route. If the uncertainty remains too wide, the honest outcome is insufficient evidence, not an extrapolated guarantee.
 
+<!-- block: ch10-diagram-01 -->
+
+[]{#ch10-diagram-01}
+
+
+```{mermaid}
+flowchart TD
+accTitle: Evidence gates before admission
+accDescr: Define the consequence-specific error budget, freeze the task and baselines, select on development groups, lock the selection, then use untouched confirmation to decide whether evidence supports admission or remains insufficient.
+    A["Freeze task + budget"] --> C["Select on development"]
+    C --> D["Lock selection"]
+    D --> E["Untouched confirmation"]
+    E --> F["Admit if evidence fits"]
+    E --> G["Insufficient evidence"]
+```
+Diagram: This dependency order prevents development choices from using confirmation evidence; no threshold is supplied here.
+
+
 <!-- block: ch10-005 -->
 
 []{#ch10-005}
@@ -64,6 +82,21 @@ The next work has a dependency order without requiring a linear research story. 
 
 
 Any eventual admission should be narrow and reversible. The model supplies an observation; Python checks evidence scope, policy and authority before taking action. A replacement sensor must be replayable and removable. Changing a checkpoint, prompt, rubric or source distribution can invalidate the evidence that supported admission, so those changes require a proportionate reevaluation rather than inheriting permanent trust.
+
+<!-- block: ch10-diagram-02 -->
+
+[]{#ch10-diagram-02}
+
+
+```{mermaid}
+flowchart TD
+accTitle: Python controls the action gate
+accDescr: The model returns an observation to Python, which checks evidence scope, policy, and authority before allowing a narrow action; if checks fail, the observation is not admitted.
+    A["Model observation"] --> B["Python checks evidence, policy, authority"]
+    B --> C["Checks pass: narrow action"]
+    B --> D["Checks fail: no admission"]
+```
+Diagram: The model provides evidence for a decision; the application owns the deterministic authority gate.
 
 <!-- block: ch10-010 -->
 

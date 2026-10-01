@@ -75,6 +75,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -222,6 +225,27 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch05-004 -->
 <p><span id="ch05-004"></span></p>
 <p>Both checkpoints were stable across the tested paraphrases and distractors, but each began with only four correct labels out of six. The persistent error was attribution. Evidence that Tomas owns a silver key does not deny that Mira owns a copper key. It leaves that claim unresolved. Both models answered denial, and explicit guidance did not fix it. Removing decisive evidence and making decisive edits worked on the simple controls. Stability and correctness had separated in a particularly useful way.</p>
+<!-- block: ch05-diagram-01 -->
+<p><span id="ch05-diagram-01"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Prompt controls test stability and responsiveness
+    accDescr: Meaning-preserving prompt changes should leave the answer stable. An edit to decisive evidence changes what the evidence supports and should change the answer.
+    Prompt["Prompt condition"] --&gt; Same["Meaning preserved"]
+    Same --&gt; Stable["Expect stable answer"]
+    Edit["Decisive evidence edit"] --&gt; Changed["Meaning changes"]
+    Changed --&gt; Responsive["Expect changed answer"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: The probe separates stability under paraphrases and distractors from responsiveness to evidence changes.</p>
 <!-- block: ch05-005 -->
 <p><span id="ch05-005"></span></p>
 <div class="quarto-figure quarto-figure-center">
@@ -242,9 +266,67 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch05-009 -->
 <p><span id="ch05-009"></span></p>
 <p>Duplicate detection remained constant: base said yes to all four cases, typed said no to all four. Each matched two references but failed a different class. The published corpus’s negative-label imbalance was consistent with one possible explanation for typed behavior; it did not establish the cause. An exact comparator could solve these intentionally simple invoice cases. The experiment gave me a reason to preserve deterministic code, alongside a task-specific clue about wording.</p>
+<!-- block: ch05-diagram-02 -->
+<p><span id="ch05-diagram-02"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Corpus patterns motivate fresh prompt probes
+    accDescr: Training material patterns motivate a hypothesis, which is tested on newly authored scenarios. Development cases support selection while confirmation cases are reserved.
+    Pattern["Training pattern"] --&gt; Hypothesis["Prompt hypothesis"]
+    Hypothesis --&gt; Fresh["Fresh scenarios"]
+    Fresh --&gt; Development["Development selection"]
+    Development --&gt; Confirmation["Reserved confirmation"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: Corpus inspection shaped a hypothesis, while fresh development and reserved confirmation cases provide separate checks.</p>
 <!-- block: ch05-010 -->
 <p><span id="ch05-010"></span></p>
-<p>These fixtures were tiny and included near-replicates. The next study therefore prepared 150 scenarios across three tasks, split into ninety development and sixty confirmation cases. Four conditions are fixed in advance; candidate selection occurs on development, with baseline and the selected condition reserved for confirmation. At this book’s cutoff, the record is development-ready and reports no inference outcomes. I cannot supply a winning prompt or a confirmed gain. <a href="./evidence.html#e06-expanded-study-status">Evidence E06</a></p>
+<p>These fixtures were tiny and included near-replicates. The expanded study used fifty scenarios per task: invoice reconciliation, duplicate detection and evidence support. Ninety development cases received four fixed conditions across both checkpoints, producing 720 predictions. Selection was frozen before sixty confirmation cases received baseline and the selected condition, producing 180 predictions. References were independently model-reviewed synthetic labels. Confirmation contains fresh cases within ten shared mechanism patterns per task, not unseen mechanism families. <a href="./evidence.html#e06-expanded-study-status">Evidence E06</a></p>
+<!-- block: ch05-012 -->
+<p><span id="ch05-012"></span></p>
+<p>Development exposed useful contrasts without establishing a general recipe. Operational wording moved base invoice matching from 15/30 to 21/30: eight repairs and two regressions. The two regressions exceeded the registered gate, so that variant was not selected or tested in confirmation. Typed invoice matching instead fell from 17/30 to 15/30 under the same intervention. Base prose repaired five invoice cases and broke five, leaving 15/30 unchanged. An average alone would have hidden those opposing changes.</p>
+<!-- block: ch05-013 -->
+<p><span id="ch05-013"></span></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Model/task and variant</th>
+<th style="text-align: right;">Baseline /20</th>
+<th style="text-align: right;">Variant /20</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Base duplicates: prose</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td>Base evidence: prose</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="odd">
+<td>Typed duplicates: operational wording</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">12</td>
+</tr>
+</tbody>
+</table>
+<!-- block: ch05-014 -->
+<p><span id="ch05-014"></span></p>
+<p>The one confirmation repair was an exact invoice-ID/vendor pair in a three-entry history. Typed exact-pair recall improved only from 1/10 to 2/10; the descriptive clustered interval for the overall paired gain was zero to fifteen percentage points. Base evidence prose turned an unknown prerequisite into an unsupported conclusion: “If the switch is enabled, the sensor is active” does not establish activity when the switch state is unknown. The development gains for base duplicate and evidence prose did not recur as confirmation improvements.</p>
+<!-- block: ch05-015 -->
+<p><span id="ch05-015"></span></p>
+<p>The concrete contrasts give me testing heuristics. Name the intended operation, preserve semantic roles, and include near matches, wrong subjects, missing attributes and conflicting sources as controls. Count repairs, regressions and wrong-to-wrong flips separately. These are ways to diagnose prompts, not a winning prompt recipe. In development, both checkpoints handled every direct support, denial and negation example, but failed every missing-attribute and equal-authority conflict example. Familiar language cues may be easier to access than relational bookkeeping; this is a behavioral hypothesis, not an attention-level finding. Exact equality and arithmetic still favor deterministic comparators.</p>
 <!-- block: ch05-011 -->
 <p><span id="ch05-011"></span></p>
 <p>The discipline matters more than a favorable ending. Once I inspect an error and design a repair, that example becomes development evidence. Its paraphrases must stay in the same split. A larger count of related variants does not manufacture independent confirmation. These questions lead directly to the next branch: <a href="./06-references.html">what should the reference answer mean?</a></p>

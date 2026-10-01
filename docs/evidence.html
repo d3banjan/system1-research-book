@@ -74,6 +74,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -303,6 +306,25 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: evidence-008 -->
 <p><span id="evidence-008"></span></p>
 <p>No cross-model speed conclusion follows: OpenJev used quantization and partial CPU offload. Searching forty configurations also creates selection risk. The untouched confirmation set was correctly left unopened after rejection at the development gate.</p>
+<!-- block: app-diagram-01 -->
+<p><span id="app-diagram-01"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+accTitle: Evidence record provenance
+accDescr: A local study record is summarized under a named E identifier; the manuscript reports source-recorded observations with the methods and limitations attached to that record.
+    A["Local study record"] --&gt; B["Named E-ID summary"]
+    B --&gt; C["Observations with limits"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: The E identifier links a claim to its source record; the manuscript summarizes reported evidence without rerunning it.</p>
 <!-- block: evidence-009 -->
 <p><span id="evidence-009"></span></p>
 </section>
@@ -337,7 +359,33 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="e06-expanded-study-status">E06: Expanded study status</h2>
 <!-- block: evidence-017 -->
 <p><span id="evidence-017"></span></p>
-<p>Source record: “Expanded Laya prompt study,” pre-inference freeze, 2026-10-01. Prepared: 150 scenarios, ninety development and sixty confirmation, fifty per task. Four fixed conditions; maximum 720 development and 240 confirmation predictions are budgets, not completed counts. Independently reviewed labels agreed with author labels on all prepared scenarios. Ten patterns per task are uncertainty clusters, and overlap limits confirmation to fresh cases within known mechanisms. No inference results are reported at this snapshot.</p>
+<p>Source records: “Expanded Laya prompt study” protocol and “Expanded Laya prompt results,” completed 2026-10-01. Fifty scenarios per task: 150 total, ninety development and sixty confirmation. Four fixed conditions on development produced 720 predictions. Frozen selection plus baseline produced 180 confirmation predictions:900 total. Cached base/typed revision remains <code>55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851</code>; CPU, FP32, full-input cap 1,024 and head budget 192, with no reported truncation. No fine-tuning or new model weights. Independently reviewed synthetic references agreed with all authored labels; they are not human gold.</p>
+<!-- block: evidence-028 -->
+<p><span id="evidence-028"></span></p>
+<p>Selection required improved macro recall, at most one newly broken development case and no newly unsupported assertion on unresolved evidence; baseline wins ties. Base order operational wording improved15/30 to 21/30 but broke two cases, so remained unselected and unconfirmed. Selected confirmation results: base duplicate prose10/20 →10/20; base evidence prose13/20 →12/20; typed duplicate operational wording11/20 →12/20. Other model/task pairs retained baseline. The typed gain repaired one case without regressions, while exact-pair recall remained 2/10. Descriptive paired 95% intervals from 5,000 resamples of ten authored pattern clusters: respectively [0,0], [−0.15,0] and [0,0.15]. These characterize the fixture, not production reliability.</p>
+<!-- block: app-diagram-02 -->
+<p><span id="app-diagram-02"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+accTitle: Expanded study selection and confirmation
+accDescr: Four fixed development conditions support a frozen selection. Baseline and the selected condition are compared on fresh confirmation cases, with repairs and regressions retained.
+    A["Four fixed development conditions"] --&gt; B["Frozen selection"]
+    B --&gt; C["Baseline versus selected confirmation"]
+    C --&gt; D["Mixed results and paired diagnostics"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: The expanded study separates development selection from confirmation outcomes.</p>
+<!-- block: evidence-029 -->
+<p><span id="evidence-029"></span></p>
+<p>Ten shared patterns per task create dependence. Confirmation covers new cases within known patterns; some individual invoice discrepancy subtypes lack negative confirmation examples. Rejected variants are development diagnostics only. No repeated-run stability or target-domain calibration was established. Detailed contrasts include eight invoice repairs with two false alarms, five prose repairs offset by five regressions, and an evidence conflict changing between two wrong labels. These motivate scoped testing heuristics, not a universal intervention or deployment claim.</p>
 <!-- block: evidence-018 -->
 <p><span id="evidence-018"></span></p>
 </section>
@@ -403,6 +451,25 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: evidence-025 -->
 <p><span id="evidence-025"></span></p>
 <p>These IDs track missing evidence, not incomplete prose. Proposed experiments require their own bounded protocol and resources; this book does not report them as executed.</p>
+<!-- block: app-diagram-03 -->
+<p><span id="app-diagram-03"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+accTitle: Proposed evidence task status
+accDescr: A missing-evidence item needs a bounded protocol and resources before an experiment produces a new source record; proposed work is not an executed result.
+    A["Missing evidence"] --&gt; B["Bounded protocol and resources"]
+    B --&gt; C["New execution record"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: Future-work IDs name proposed evidence tasks; the ledger does not treat them as completed experiments.</p>
 <!-- block: evidence-026 -->
 <p><span id="evidence-026"></span></p>
 <table class="caption-top table">
@@ -436,8 +503,8 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="even">
 <td>PROMPT-01</td>
-<td>Expanded study paired fixes/breaks on development and confirmation</td>
-<td>Await recorded inference outcomes and locked selection; no result assumed</td>
+<td>Replication on independent mechanism families and adjudicated task data</td>
+<td>Initial expanded study completed in E06; mixed/null results and one small gain need broader confirmation</td>
 </tr>
 <tr class="odd">
 <td>JUDGE-01</td>

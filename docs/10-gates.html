@@ -75,6 +75,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -222,6 +225,28 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch10-004 -->
 <p><span id="ch10-004"></span></p>
 <p>Then I would freeze the task, inputs, source identities, rubric, native request, output validation and baselines. Deterministic checks and constant/deferral strategies deserve explicit comparison. Candidate selection and threshold tuning belong on development groups. Only after selection is locked should untouched confirmation groups assess the proposed route. If the uncertainty remains too wide, the honest outcome is insufficient evidence, not an extrapolated guarantee.</p>
+<!-- block: ch10-diagram-01 -->
+<p><span id="ch10-diagram-01"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+accTitle: Evidence gates before admission
+accDescr: Define the consequence-specific error budget, freeze the task and baselines, select on development groups, lock the selection, then use untouched confirmation to decide whether evidence supports admission or remains insufficient.
+    A["Freeze task + budget"] --&gt; C["Select on development"]
+    C --&gt; D["Lock selection"]
+    D --&gt; E["Untouched confirmation"]
+    E --&gt; F["Admit if evidence fits"]
+    E --&gt; G["Insufficient evidence"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: This dependency order prevents development choices from using confirmation evidence; no threshold is supplied here.</p>
 <!-- block: ch10-005 -->
 <p><span id="ch10-005"></span></p>
 <p>Risk and coverage should appear together. Selective risk asks how often accepted judgments are wrong under the specified reference. Useful coverage asks how much work those accepted judgments accomplish. A threshold can reduce the first by abandoning the second. I also need per-category unsupported assertions and polarity recall, because an aggregate curve can hide a disastrous subgroup. Invalid outputs, abstentions and valid unresolved labels remain distinct throughout.</p>
@@ -237,6 +262,26 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch10-009 -->
 <p><span id="ch10-009"></span></p>
 <p>Any eventual admission should be narrow and reversible. The model supplies an observation; Python checks evidence scope, policy and authority before taking action. A replacement sensor must be replayable and removable. Changing a checkpoint, prompt, rubric or source distribution can invalidate the evidence that supported admission, so those changes require a proportionate reevaluation rather than inheriting permanent trust.</p>
+<!-- block: ch10-diagram-02 -->
+<p><span id="ch10-diagram-02"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+accTitle: Python controls the action gate
+accDescr: The model returns an observation to Python, which checks evidence scope, policy, and authority before allowing a narrow action; if checks fail, the observation is not admitted.
+    A["Model observation"] --&gt; B["Python checks evidence, policy, authority"]
+    B --&gt; C["Checks pass: narrow action"]
+    B --&gt; D["Checks fail: no admission"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: The model provides evidence for a decision; the application owns the deterministic authority gate.</p>
 <!-- block: ch10-010 -->
 <p><span id="ch10-010"></span></p>
 <p>I began by trying to transfer a workflow into one typed choice. I now have a more demanding and more testable goal: make one semantic operation cheap enough, useful enough and bounded enough for a particular place in the application. The simplest component that meets that contract is enough. When it fails, the next refinement should answer the failure I measured.</p>

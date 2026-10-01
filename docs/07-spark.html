@@ -75,6 +75,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -259,6 +262,29 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch07-013 -->
 <p><span id="ch07-013"></span></p>
 <p>Spark made the cost question more concrete. Faster completion can reduce one expense while invalid provenance and mistaken targets increase review. The useful comparison is cost per sufficiently reliable, accepted annotation, with failed calls included. <a href="./08-supervision.html">Chapter 8</a> explains why preserving those failures creates a better candidate corpus than keeping only the successful labels.</p>
+<!-- block: ch07-diagram-01 -->
+<p><span id="ch07-diagram-01"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+accTitle: Spark pilot outcomes by mode
+accDescr: Twelve attempts in each mode yielded one accepted thinking output with eleven budget failures, and seven accepted nonthinking outputs with five citation-invalid outputs.
+    A["Same task and rubric"] --&gt; B["Thinking"]
+    B --&gt; C["1 accepted of 12"]
+    B --&gt; D["11 budget failures"]
+    A --&gt; E["Nonthinking"]
+    E --&gt; F["7 accepted of 12"]
+    E --&gt; G["5 citation-invalid"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: This records pipeline outcomes by mode; semantic agreement was computed only on the selected valid nonthinking outputs.</p>
 
 
 

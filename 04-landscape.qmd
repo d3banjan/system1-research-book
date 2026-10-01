@@ -50,6 +50,25 @@ The wider local study completed fourteen native lanes and 1,512 card records. It
 
 The relevance lanes illustrate why I resist a unified ranking. MiniLM, Qwen and Jina ranked the small three-passage slates perfectly by nDCG@3 under both references, while token overlap was already strong. In a separate answer-annotation fixture, a contradicted answer received a Qwen relevance score of 0.99855. The answer was relevant to the question and wrong according to the evidence. No contradiction exists between those observations once I respect the score's task. [Evidence E03](evidence.qmd#e03-native-family-comparison)
 
+<!-- block: ch04-diagram-01 -->
+
+[]{#ch04-diagram-01}
+
+
+```{mermaid}
+flowchart TD
+    accTitle: Match model interface to the application question
+    accDescr: A question about whether evidence supports a claim calls for claim-relation scoring. A question about which passage to inspect calls for relevance ranking; neither score alone decides the final application action.
+    Question["Question to answer"] --> Claim["Does evidence support a claim?"]
+    Question --> Passage["Which passage is relevant?"]
+    Claim --> NLI["NLI or consistency score"]
+    Passage --> Ranker["Passage relevance ranker"]
+    NLI --> Policy["Backend applies policy"]
+    Ranker --> Policy
+```
+
+Diagram: Claim support and passage relevance are separate measurements; the backend still owns the decision that uses either result.
+
 <!-- block: ch04-007 -->
 
 []{#ch04-007}
@@ -70,6 +89,24 @@ My initial memory model is simple: resident weights plus sequence state, working
 
 
 Active parameters also differ from stored parameters. A mixture-of-experts model may activate only a fraction of its weights for each token while retaining many more weights. [Qwen3-30B-A3B](https://huggingface.co/Qwen/Qwen3-30B-A3B) is therefore not a straightforward 12 GB fully resident candidate merely because its active count is small. Partial CPU offload is a separate latency and RAM trade-off. The historical OpenJev run used such offload; its timing is not an equal-hardware comparison with a small encoder.
+
+<!-- block: ch04-diagram-02 -->
+
+[]{#ch04-diagram-02}
+
+
+```{mermaid}
+flowchart TD
+    accTitle: Runtime fit depends on more than parameter count
+    accDescr: Resident weights, sequence state and working buffers all consume available memory. Advertised context and active parameter count alone do not establish fit; the intended workload needs measurement.
+    Weights["Resident weights"] --> Memory["Memory required"]
+    State["Sequence state"] --> Memory
+    Buffers["Working buffers"] --> Memory
+    Active["Active parameter count"] -. "not resident total" .-> Memory
+    Memory --> Workload["Measure intended workload"]
+```
+
+Diagram: Parameter arithmetic offers a lower bound, while runtime allocation and the actual workload determine whether a local model fits.
 
 <!-- block: ch04-010 -->
 

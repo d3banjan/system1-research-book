@@ -75,6 +75,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -225,6 +228,28 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch01-005 -->
 <p><span id="ch01-005"></span></p>
 <p>I therefore reduced the model’s job to observations about supplied text. For the fictional alert, an observation might be <code>people_management: not_stated</code>, with the relevant source identifier. Python would decide what to do with an unresolved field: retain the role, request the full description or send it for review. This makes uncertainty actionable without turning it into permission. A sensor may fail; the application must know what that failure means.</p>
+<!-- block: ch01-diagram-01 -->
+<p><span id="ch01-diagram-01"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Semantic observation within the workflow
+    accDescr: The workflow parses an alert, obtains and validates an observation, applies policy and records an outcome. Unclear evidence can trigger review or a fuller source fetch through the application.
+    Parse["Parse alert"] --&gt; Observe["Observe text"]
+    Observe --&gt; Validate["Validate source"]
+    Validate --&gt; Policy["Apply policy"]
+    Policy --&gt; Record["Record outcome"]
+    Policy -. "review or fetch" .-&gt; Review["Application follow-up"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: Semantic interpretation occupies one seam in the existing workflow; unresolved evidence follows an explicit application path.</p>
 <!-- block: ch01-006 -->
 <p><span id="ch01-006"></span></p>
 <p>The first useful design is deliberately ordinary. Parse the input. Preserve its identity. Ask one bounded semantic question. Validate the returned shape and provenance. Apply explicit policy to the observation. Record the result. I do not need a framework to express that sequence. I need an inspectable seam where I can replace the sensor, replay a request and compare its output against a reference without triggering an external action.</p>
@@ -237,6 +262,29 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch01-009 -->
 <p><span id="ch01-009"></span></p>
 <p>This suggests a contract richer than a bare enum: the observation, evidence scope, source identity, model/configuration identity and validity status travel together. The contract does not need the model’s private reasoning. It needs enough observable information to reconstruct what was asked and reject unsupported use. If the source is incomplete, the backend should preserve that incompleteness.</p>
+<!-- block: ch01-diagram-02 -->
+<p><span id="ch01-diagram-02"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Observable contract around a model result
+    accDescr: An observation travels with its evidence scope, source identity and model configuration. Those fields support a validity check before use.
+    Result["Observation"] --&gt; Scope["Evidence scope"]
+    Result --&gt; Source["Source identity"]
+    Result --&gt; Config["Model and config"]
+    Scope --&gt; Gate["Use only if valid"]
+    Source --&gt; Gate
+    Config --&gt; Gate
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: The contract supplies observable context for checking a result; it does not rely on private model reasoning.</p>
 <!-- block: ch01-010 -->
 <p><span id="ch01-010"></span></p>
 <p>My stopping rule also changes. I am no longer trying to make one model “understand the workflow.” I am trying to make one observation useful within a consequence-specific error budget. A field used only to prioritize manual review may tolerate different errors from a field that excludes a role. The threshold belongs to that use and must be declared before I select a favorable result.</p>

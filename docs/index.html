@@ -74,6 +74,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -227,6 +230,28 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: intro-006 -->
 <p><span id="intro-006"></span></p>
 <p>I also want my explanations to earn their complexity. A cheap mental model can be enough to make the next engineering decision. When an observed failure exposes its limits, I can refine it. That deliberate simplification differs from accepting unsupported model predictions. Predictions require an error budget: which mistakes matter, what their consequences are, and how much useful recall or coverage the component must retain. “Never answer” and “always assert” can both fail the contract.</p>
+<!-- block: intro-diagram-01 -->
+<p><span id="intro-diagram-01"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Observation stays separate from authority
+    accDescr: Supplied text informs a bounded observation. Python checks its scope before policy chooses an action, while uncertainty can lead to review.
+    Text["Supplied text"] --&gt; Observe["Bounded observation"]
+    Observe --&gt; Check["Python checks scope"]
+    Check --&gt; Policy["Policy decides action"]
+    Policy -. "uncertain" .-&gt; Review["Request review"]
+    Policy --&gt; Record["Record result"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: The proposed boundary lets a local model report an observation while Python checks scope and applies policy; uncertainty remains a reviewable state.</p>
 <!-- block: intro-007 -->
 <p><span id="intro-007"></span></p>
 <p>Eight branches developed around this question. The first is the workflow boundary: which judgments can be separated from policy? The second is the model interface: bounded options, extracted spans, claim support and passage relevance are different measurements. The third is zero-shot behavior: what changes when I alter wording, keys, distractors or evidence? These branches help me decide whether an apparent model failure is partly a poorly specified request.</p>
@@ -236,15 +261,58 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: intro-009 -->
 <p><span id="intro-009"></span></p>
 <p>The sixth branch puts annotation on my GPU. Spark finished more requests and ran faster when I disabled native thinking, but several judgments assessed its own output format instead of the target answer. The seventh branch preserves these failures as richer candidate supervision: source lineage, separate votes, missing labels, failure tags and proposed evidence spans. It also forces a distinction between evaluation masks, loss masks, attention masks and Laya’s option-position <code>[MASK]</code> tokens. The eighth sets the gate: what evidence would justify admitting any observation into the active harness?</p>
+<!-- block: intro-diagram-02 -->
+<p><span id="intro-diagram-02"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Research draws on several model disciplines
+    accDescr: Natural language inference and evidence attribution, retrieval and relevance, selective prediction and abstention, robustness evaluation, proxy judge meta-evaluation, and future adaptation or distillation connect to distinct investigation questions. Tested work, design ideas, and future work are distinguished.
+    NLI["NLI and evidence attribution: probed"] --&gt;|"tests claim support"| Selective["Selective prediction and abstention: probed"]
+    Retrieval["Retrieval and relevance: compared"] --&gt;|"finds candidate passages"| NLI
+    Robustness["Robustness evaluation: probed"] --&gt;|"tests prompt sensitivity"| Selective
+    Proxy["Proxy judge meta-evaluation: design"] --&gt;|"checks reference quality"| NLI
+    NLI --&gt;|"could inform future"| Adaptation["Adaptation and distillation: future"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: These conceptual links map borrowed tools to questions around one bounded semantic layer; they do not show a chronological pipeline or imply every technique is implemented.</p>
 <!-- block: intro-010 -->
 <p><span id="intro-010"></span></p>
 <p>These branches overlap. Better references can expose a prompt defect. A better prompt might remove the need for adaptation. A cheap local judge might generate candidate labels while creating a new adjudication burden. The chapter sequence makes this investigation readable; it does not imply a linear chronology from failed prompt to successful fine-tuning.</p>
 <!-- block: intro-011 -->
 <p><span id="intro-011"></span></p>
-<p>At this release, diagnostic runs, a wider native-interface comparison, prompt probes and a Spark pilot exist. No task fine-tuning has started. Synthetic optimizer and memory probes establish limited feasibility, not learned task performance. The expanded prompt study has prepared scenarios and reviewed references but reports no inference results in its current record. The general annotation factory remains a parked specification. None of these experiments has replaced the production workflow.</p>
+<p>At this release, diagnostic runs, a wider native-interface comparison, prompt probes and a Spark pilot exist. No task fine-tuning has started. Synthetic optimizer and memory probes establish limited feasibility, not learned task performance. The expanded prompt study has now completed development and frozen-selection confirmation: results are mixed, with no broad prompt recipe established. The general annotation factory remains a parked specification. None of these experiments has replaced the production workflow.</p>
 <!-- block: intro-012 -->
 <p><span id="intro-012"></span></p>
 <p>This is the canonical authored book draft. Earlier articles and experiment notes remain research sources, rather than chapter copies to synchronize. The public evidence appendix gives short identifiers, denominators and limits; it deliberately does not expose private inputs or machine locations. Synthetic examples below illustrate the same distinctions without reproducing private correspondence.</p>
+<!-- block: intro-diagram-03 -->
+<p><span id="intro-diagram-03"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Manuscript and public evidence appendix
+    accDescr: Research sources inform the canonical draft. Its public evidence appendix reports denominators and limits while omitting private inputs.
+    Research["Research sources"] --&gt; Draft["Canonical book draft"]
+    Draft --&gt; Appendix["Public evidence appendix"]
+    Appendix --&gt; Limits["Denominators and limits"]
+    Appendix --&gt; Privacy["Private inputs omitted"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: The appendix exposes enough evidence context to qualify claims without publishing private correspondence or machine locations.</p>
 <!-- block: intro-013 -->
 <p><span id="intro-013"></span></p>
 <ol type="1">

@@ -37,6 +37,23 @@ The frozen sparse-alert check exposed this problem directly. Across 149 scorable
 
 This result made an attractive shortcut untenable: I could not use schema validity as a proxy for evidence discipline. Every unsupported label could still be a legal enum. Nor could I report only recall on the fields the model asserted. A sensor that answers nearly everything may recover positive cases while flooding the application with invented facts. I need unsupported assertions beside useful supported and denied recall.
 
+<!-- block: ch03-diagram-01 -->
+
+[]{#ch03-diagram-01}
+
+
+```{mermaid}
+flowchart TD
+    accTitle: Evidence relation separates contradiction from uncertainty
+    accDescr: Supplied evidence can support a claim, contradict it, or leave it unresolved. Missing evidence remains distinct from a denial.
+    Evidence["Supplied evidence"] --> Relation["Claim relation"]
+    Relation --> Support["Supports claim"]
+    Relation --> Contradiction["Contradicts claim"]
+    Relation --> Unresolved["Leaves claim unresolved"]
+```
+
+Diagram: The three relations keep absence of evidence distinct from evidence that denies a claim.
+
 <!-- block: ch03-006 -->
 
 []{#ch03-006}
@@ -64,6 +81,24 @@ A later, separate adapter experiment sharpened the trade-off. Forty configuratio
 
 
 I do not interpret zero observed unsupported assertions as zero risk. The sample is small, authored and task-specific. I also cannot reward a component merely for declining everything: native abstention, a valid semantic `unresolved` answer and a broken response are distinct events. The constant-unresolved baseline is useful precisely because it makes the no-information strategy visible.
+
+<!-- block: ch03-diagram-02 -->
+
+[]{#ch03-diagram-02}
+
+
+```{mermaid}
+flowchart TD
+    accTitle: Evaluation separates response validity from useful coverage
+    accDescr: An output may be malformed or valid. Valid responses can assert a label that may still be wrong, abstain, or return a semantic unresolved label; a constant-unresolved baseline exposes a no-information strategy.
+    Output["Model output"] -->|"malformed"| Broken["Invalid response"]
+    Output -->|"valid"| Valid["Valid response"]
+    Valid --> Answer["Asserted label may be wrong"]
+    Valid --> Abstain["Native abstention"]
+    Valid --> Unresolved["Semantic unresolved"]
+```
+
+Diagram: Separating malformed, abstaining and unresolved outcomes prevents schema failure or universal non-answering from counting as useful semantic coverage.
 
 <!-- block: ch03-010 -->
 

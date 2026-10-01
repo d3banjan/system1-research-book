@@ -75,6 +75,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -263,6 +266,27 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
+<!-- block: ch08-diagram-01 -->
+<p><span id="ch08-diagram-01"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+accTitle: Four distinct mask jobs
+accDescr: Evaluation eligibility selects comparison fields; a future loss mask selects supervised targets; an attention mask restricts input access; evidence-routing supervision instead trains a specified evidence relationship; and Laya MASK marks the option-scoring position.
+    A["Distinct mask jobs"] --&gt; B["Eval selects fields"]
+    A --&gt; C["Loss selects targets"]
+    A --&gt; D["Attention limits input"]
+    A --&gt; E["Laya MASK marks option"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: The four mechanisms have different jobs, so one mask never implies the behavior of another.</p>
 <!-- block: ch08-007 -->
 <p><span id="ch08-007"></span></p>
 <p>An unresolved reference is often a valid target, not a missing annotation. A malformed judge output is different. In evaluation, I can exclude that judge’s unusable field from a semantic denominator while still counting its failed attempt. In future training, I might withhold a disputed field, adjudicate it or use a justified soft target. Disagreement does not automatically define a probability distribution suitable for a loss.</p>
@@ -272,6 +296,26 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch08-009 -->
 <p><span id="ch08-009"></span></p>
 <p>Lineage determines the split. Original scenarios, paraphrases, counterfactuals, head rows and derived annotation cards belong together before flattening. Related employer, requisition or conversation records need the same care where applicable. Once I mine a failure to design a prompt or training target, its relatives cannot serve as fresh confirmation of that repair. More rows do not mean more independent evidence.</p>
+<!-- block: ch08-diagram-02 -->
+<p><span id="ch08-diagram-02"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+accTitle: Group related records before splitting
+accDescr: An original scenario and its paraphrases, counterfactuals, head rows, and derived annotation cards stay in one lineage group, which is assigned wholly to one split.
+    A["Original scenario"] --&gt; B["Related variants and cards"]
+    B --&gt; C["One lineage group"]
+    C --&gt; D["One split only"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: Grouping relatives before assigning splits prevents mined variants from masquerading as fresh confirmation.</p>
 <!-- block: ch08-010 -->
 <p><span id="ch08-010"></span></p>
 <p>The practical artifact is a revisable evidence record, not a verdict dump. It supports error analysis today and leaves training choices explicit for later. That brings me to <a href="./09-training.html">Chapter 9</a>: which intervention would answer a diagnosed question, and what would make running it justified?</p>

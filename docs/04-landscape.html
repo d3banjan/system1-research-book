@@ -75,6 +75,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -268,6 +271,29 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch04-006 -->
 <p><span id="ch04-006"></span></p>
 <p>The relevance lanes illustrate why I resist a unified ranking. MiniLM, Qwen and Jina ranked the small three-passage slates perfectly by nDCG@3 under both references, while token overlap was already strong. In a separate answer-annotation fixture, a contradicted answer received a Qwen relevance score of 0.99855. The answer was relevant to the question and wrong according to the evidence. No contradiction exists between those observations once I respect the score’s task. <a href="./evidence.html#e03-native-family-comparison">Evidence E03</a></p>
+<!-- block: ch04-diagram-01 -->
+<p><span id="ch04-diagram-01"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Match model interface to the application question
+    accDescr: A question about whether evidence supports a claim calls for claim-relation scoring. A question about which passage to inspect calls for relevance ranking; neither score alone decides the final application action.
+    Question["Question to answer"] --&gt; Claim["Does evidence support a claim?"]
+    Question --&gt; Passage["Which passage is relevant?"]
+    Claim --&gt; NLI["NLI or consistency score"]
+    Passage --&gt; Ranker["Passage relevance ranker"]
+    NLI --&gt; Policy["Backend applies policy"]
+    Ranker --&gt; Policy
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: Claim support and passage relevance are separate measurements; the backend still owns the decision that uses either result.</p>
 <!-- block: ch04-007 -->
 <p><span id="ch04-007"></span></p>
 <p>The generative branch asks another question: which local worker is worth testing on a 12 GB GPU? The dated survey supplies a representative panel, not measured winners. <a href="https://huggingface.co/XHToken/Spark-X2.5-4B">Spark-X2.5-4B</a> is the measured starting point. <a href="https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507">Qwen3-4B-Instruct-2507</a> offers a nonthinking comparison. <a href="https://huggingface.co/microsoft/Phi-4-mini-instruct">Phi-4-mini</a> and <a href="https://huggingface.co/google/gemma-3-4b-it">Gemma 3 4B</a> offer other model families. <a href="https://huggingface.co/LiquidAI/LFM2-2.6B">LFM2-2.6B</a> and <a href="https://huggingface.co/Qwen/Qwen3.5-4B">Qwen3.5-4B</a> introduce different mixtures of recurrent or convolutional processing and attention. Their local task quality and memory behavior remain unmeasured here.</p>
@@ -277,6 +303,28 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch04-009 -->
 <p><span id="ch04-009"></span></p>
 <p>Active parameters also differ from stored parameters. A mixture-of-experts model may activate only a fraction of its weights for each token while retaining many more weights. <a href="https://huggingface.co/Qwen/Qwen3-30B-A3B">Qwen3-30B-A3B</a> is therefore not a straightforward 12 GB fully resident candidate merely because its active count is small. Partial CPU offload is a separate latency and RAM trade-off. The historical OpenJev run used such offload; its timing is not an equal-hardware comparison with a small encoder.</p>
+<!-- block: ch04-diagram-02 -->
+<p><span id="ch04-diagram-02"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Runtime fit depends on more than parameter count
+    accDescr: Resident weights, sequence state and working buffers all consume available memory. Advertised context and active parameter count alone do not establish fit; the intended workload needs measurement.
+    Weights["Resident weights"] --&gt; Memory["Memory required"]
+    State["Sequence state"] --&gt; Memory
+    Buffers["Working buffers"] --&gt; Memory
+    Active["Active parameter count"] -. "not resident total" .-&gt; Memory
+    Memory --&gt; Workload["Measure intended workload"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: Parameter arithmetic offers a lower bound, while runtime allocation and the actual workload determine whether a local model fits.</p>
 <!-- block: ch04-010 -->
 <p><span id="ch04-010"></span></p>
 <p>The landscape leaves specific gaps: immutable pre-cutoff identities, exact licenses, label maps, selected quantizations, installed runtime support and measured allocation at the intended workload. I keep these as evidence tasks in the <a href="./evidence.html#future-work">future-work ledger</a>. More breadth becomes useful only when it tests a missing interface or a concrete cost hypothesis. Meanwhile, <a href="./05-prompts.html">Chapter 5</a> asks what can improve without changing the model at all.</p>

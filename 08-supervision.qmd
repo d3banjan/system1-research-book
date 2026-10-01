@@ -49,6 +49,22 @@ Four different meanings of “mask” now matter. They affect different stages a
 | Attention mask or evidence-routing supervision | Restrict access to input positions or train a specified evidence relationship | A proposed evidence span already implements a training intervention |
 | Laya option `[MASK]` marker | Identify the contextual position read by the option scorer | An evidence restriction or missing target |
 
+<!-- block: ch08-diagram-01 -->
+
+[]{#ch08-diagram-01}
+
+
+```{mermaid}
+flowchart TD
+accTitle: Four distinct mask jobs
+accDescr: Evaluation eligibility selects comparison fields; a future loss mask selects supervised targets; an attention mask restricts input access; evidence-routing supervision instead trains a specified evidence relationship; and Laya MASK marks the option-scoring position.
+    A["Distinct mask jobs"] --> B["Eval selects fields"]
+    A --> C["Loss selects targets"]
+    A --> D["Attention limits input"]
+    A --> E["Laya MASK marks option"]
+```
+Diagram: The four mechanisms have different jobs, so one mask never implies the behavior of another.
+
 <!-- block: ch08-007 -->
 
 []{#ch08-007}
@@ -69,6 +85,21 @@ Evidence tags need similar restraint. Restricting attention to a highlighted spa
 
 
 Lineage determines the split. Original scenarios, paraphrases, counterfactuals, head rows and derived annotation cards belong together before flattening. Related employer, requisition or conversation records need the same care where applicable. Once I mine a failure to design a prompt or training target, its relatives cannot serve as fresh confirmation of that repair. More rows do not mean more independent evidence.
+
+<!-- block: ch08-diagram-02 -->
+
+[]{#ch08-diagram-02}
+
+
+```{mermaid}
+flowchart TD
+accTitle: Group related records before splitting
+accDescr: An original scenario and its paraphrases, counterfactuals, head rows, and derived annotation cards stay in one lineage group, which is assigned wholly to one split.
+    A["Original scenario"] --> B["Related variants and cards"]
+    B --> C["One lineage group"]
+    C --> D["One split only"]
+```
+Diagram: Grouping relatives before assigning splits prevents mined variants from masquerading as fresh confirmation.
 
 <!-- block: ch08-010 -->
 

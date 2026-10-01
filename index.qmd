@@ -44,6 +44,24 @@ The question became more precise: can a small local model provide useful observa
 
 I also want my explanations to earn their complexity. A cheap mental model can be enough to make the next engineering decision. When an observed failure exposes its limits, I can refine it. That deliberate simplification differs from accepting unsupported model predictions. Predictions require an error budget: which mistakes matter, what their consequences are, and how much useful recall or coverage the component must retain. “Never answer” and “always assert” can both fail the contract.
 
+<!-- block: intro-diagram-01 -->
+
+[]{#intro-diagram-01}
+
+
+```{mermaid}
+flowchart TD
+    accTitle: Observation stays separate from authority
+    accDescr: Supplied text informs a bounded observation. Python checks its scope before policy chooses an action, while uncertainty can lead to review.
+    Text["Supplied text"] --> Observe["Bounded observation"]
+    Observe --> Check["Python checks scope"]
+    Check --> Policy["Policy decides action"]
+    Policy -. "uncertain" .-> Review["Request review"]
+    Policy --> Record["Record result"]
+```
+
+Diagram: The proposed boundary lets a local model report an observation while Python checks scope and applies policy; uncertainty remains a reviewable state.
+
 <!-- block: intro-007 -->
 
 []{#intro-007}
@@ -65,6 +83,24 @@ The fourth branch defines answer quality. Requested-information coverage, eviden
 
 The sixth branch puts annotation on my GPU. Spark finished more requests and ran faster when I disabled native thinking, but several judgments assessed its own output format instead of the target answer. The seventh branch preserves these failures as richer candidate supervision: source lineage, separate votes, missing labels, failure tags and proposed evidence spans. It also forces a distinction between evaluation masks, loss masks, attention masks and Laya's option-position `[MASK]` tokens. The eighth sets the gate: what evidence would justify admitting any observation into the active harness?
 
+<!-- block: intro-diagram-02 -->
+
+[]{#intro-diagram-02}
+
+
+```{mermaid}
+flowchart TD
+    accTitle: Research draws on several model disciplines
+    accDescr: Natural language inference and evidence attribution, retrieval and relevance, selective prediction and abstention, robustness evaluation, proxy judge meta-evaluation, and future adaptation or distillation connect to distinct investigation questions. Tested work, design ideas, and future work are distinguished.
+    NLI["NLI and evidence attribution: probed"] -->|"tests claim support"| Selective["Selective prediction and abstention: probed"]
+    Retrieval["Retrieval and relevance: compared"] -->|"finds candidate passages"| NLI
+    Robustness["Robustness evaluation: probed"] -->|"tests prompt sensitivity"| Selective
+    Proxy["Proxy judge meta-evaluation: design"] -->|"checks reference quality"| NLI
+    NLI -->|"could inform future"| Adaptation["Adaptation and distillation: future"]
+```
+
+Diagram: These conceptual links map borrowed tools to questions around one bounded semantic layer; they do not show a chronological pipeline or imply every technique is implemented.
+
 <!-- block: intro-010 -->
 
 []{#intro-010}
@@ -77,7 +113,7 @@ These branches overlap. Better references can expose a prompt defect. A better p
 []{#intro-011}
 
 
-At this release, diagnostic runs, a wider native-interface comparison, prompt probes and a Spark pilot exist. No task fine-tuning has started. Synthetic optimizer and memory probes establish limited feasibility, not learned task performance. The expanded prompt study has prepared scenarios and reviewed references but reports no inference results in its current record. The general annotation factory remains a parked specification. None of these experiments has replaced the production workflow.
+At this release, diagnostic runs, a wider native-interface comparison, prompt probes and a Spark pilot exist. No task fine-tuning has started. Synthetic optimizer and memory probes establish limited feasibility, not learned task performance. The expanded prompt study has now completed development and frozen-selection confirmation: results are mixed, with no broad prompt recipe established. The general annotation factory remains a parked specification. None of these experiments has replaced the production workflow.
 
 <!-- block: intro-012 -->
 
@@ -85,6 +121,23 @@ At this release, diagnostic runs, a wider native-interface comparison, prompt pr
 
 
 This is the canonical authored book draft. Earlier articles and experiment notes remain research sources, rather than chapter copies to synchronize. The public evidence appendix gives short identifiers, denominators and limits; it deliberately does not expose private inputs or machine locations. Synthetic examples below illustrate the same distinctions without reproducing private correspondence.
+
+<!-- block: intro-diagram-03 -->
+
+[]{#intro-diagram-03}
+
+
+```{mermaid}
+flowchart TD
+    accTitle: Manuscript and public evidence appendix
+    accDescr: Research sources inform the canonical draft. Its public evidence appendix reports denominators and limits while omitting private inputs.
+    Research["Research sources"] --> Draft["Canonical book draft"]
+    Draft --> Appendix["Public evidence appendix"]
+    Appendix --> Limits["Denominators and limits"]
+    Appendix --> Privacy["Private inputs omitted"]
+```
+
+Diagram: The appendix exposes enough evidence context to qualify claims without publishing private correspondence or machine locations.
 
 <!-- block: intro-013 -->
 

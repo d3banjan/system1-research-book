@@ -75,6 +75,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -225,6 +228,27 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch02-005 -->
 <p><span id="ch02-005"></span></p>
 <p>Several questions about the same state become separate model rows that can share a batched forward call. The employment question does not consume the management question’s answer. Each is conditioned on the original state and its own question. That distinction matters if I want an answer to depend on an earlier result: the dependency must be implemented in the surrounding pipeline or in a changed architecture. Batching independent rows does not create deliberation between them. <a href="https://github.com/NandhaKishorM/laya/blob/v0.3.21/laya/agent.py">Batching implementation</a></p>
+<!-- block: ch02-diagram-01 -->
+<p><span id="ch02-diagram-01"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Option markers produce a bounded score distribution
+    accDescr: The request includes option-position markers before encoding. The encoder and decision layers produce contextual representations from those positions, which are gathered into option scores and normalized with softmax.
+    Request["Request with option markers"] --&gt; Encoder["Encoder and decision layers"]
+    Encoder --&gt; Markers["Gather marker representations"]
+    Markers --&gt; Scores["One score per option"]
+    Scores --&gt; Softmax["Distribution over options"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: The marker positions address option readouts; softmax ranks the supplied choices but does not establish that the choice is supported by evidence.</p>
 <!-- block: ch02-006 -->
 <p><span id="ch02-006"></span></p>
 <p>Request space is another part of the instrument. The inspected typed configuration has a 1,024-token total budget and a 256-token head budget; the versioned serializer also caps individual option descriptions. Longer instructions and longer options compete with evidence. A request can be structurally valid after shortening while losing the words that distinguish two options or establish a claim. I therefore need actual token and truncation diagnostics, not a character-count estimate. These are properties of that inspected configuration, not universal limits of every Laya release. <a href="https://github.com/NandhaKishorM/laya/blob/v0.3.21/laya/common.py">Serialization source</a></p>
@@ -237,6 +261,27 @@ ul.task-list li input[type="checkbox"] {
 <!-- block: ch02-009 -->
 <p><span id="ch02-009"></span></p>
 <p>I can now refine the backend analogy. This is a learned measurement service with a serializer, limited input budget, trained readout and domain-dependent score behavior. Type checking catches malformed use of the interface. Task evaluation determines whether the measurement is useful. Keeping those checks separate lets me diagnose a failure without pretending every wrong answer is a parsing bug or every clean response is reliable.</p>
+<!-- block: ch02-diagram-02 -->
+<p><span id="ch02-diagram-02"></span></p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    accTitle: Interface checks and task evaluation answer different questions
+    accDescr: The serializer fits a request to its input budget, then the model returns an output. Shape validation checks interface form; task evaluation checks whether the measurement is useful.
+    Request["Request"] --&gt; Serializer["Serialize within budget"]
+    Serializer --&gt; Model["Learned readout"]
+    Model --&gt; Shape["Validate output shape"]
+    Shape --&gt; Task["Evaluate task value"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: A valid response shape establishes interface compliance; only task evaluation tests whether the measurement helps.</p>
 <!-- block: ch02-010 -->
 <p><span id="ch02-010"></span></p>
 <p><a href="./03-diagnostics.html">Chapter 3</a> uses this understanding to test the instrument: first with simple controls, then with sparse real evidence, and finally with narrower claim formulations.</p>
