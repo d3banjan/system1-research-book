@@ -230,12 +230,13 @@ ul.task-list li input[type="checkbox"] {
 <p>Several questions about the same state become separate model rows that can share a batched forward call. The employment question does not consume the management question’s answer. Each is conditioned on the original state and its own question. That distinction matters if I want an answer to depend on an earlier result: the dependency must be implemented in the surrounding pipeline or in a changed architecture. Batching independent rows does not create deliberation between them. <a href="https://github.com/NandhaKishorM/laya/blob/v0.3.21/laya/agent.py">Batching implementation</a></p>
 <!-- block: ch02-diagram-01 -->
 <p><span id="ch02-diagram-01"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
     accTitle: Option markers produce a bounded score distribution
     accDescr: The request includes option-position markers before encoding. The encoder and decision layers produce contextual representations from those positions, which are gathered into option scores and normalized with softmax.
     Request["Request with option markers"] --&gt; Encoder["Encoder and decision layers"]
@@ -263,12 +264,13 @@ ul.task-list li input[type="checkbox"] {
 <p>I can now refine the backend analogy. This is a learned measurement service with a serializer, limited input budget, trained readout and domain-dependent score behavior. Type checking catches malformed use of the interface. Task evaluation determines whether the measurement is useful. Keeping those checks separate lets me diagnose a failure without pretending every wrong answer is a parsing bug or every clean response is reliable.</p>
 <!-- block: ch02-diagram-02 -->
 <p><span id="ch02-diagram-02"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
     accTitle: Interface checks and task evaluation answer different questions
     accDescr: The serializer fits a request to its input budget, then the model returns an output. Shape validation checks interface form; task evaluation checks whether the measurement is useful.
     Request["Request"] --&gt; Serializer["Serialize within budget"]

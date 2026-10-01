@@ -230,12 +230,13 @@ ul.task-list li input[type="checkbox"] {
 <p>This result made an attractive shortcut untenable: I could not use schema validity as a proxy for evidence discipline. Every unsupported label could still be a legal enum. Nor could I report only recall on the fields the model asserted. A sensor that answers nearly everything may recover positive cases while flooding the application with invented facts. I need unsupported assertions beside useful supported and denied recall.</p>
 <!-- block: ch03-diagram-01 -->
 <p><span id="ch03-diagram-01"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
     accTitle: Evidence relation separates contradiction from uncertainty
     accDescr: Supplied evidence can support a claim, contradict it, or leave it unresolved. Missing evidence remains distinct from a denial.
     Evidence["Supplied evidence"] --&gt; Relation["Claim relation"]
@@ -263,12 +264,13 @@ ul.task-list li input[type="checkbox"] {
 <p>I do not interpret zero observed unsupported assertions as zero risk. The sample is small, authored and task-specific. I also cannot reward a component merely for declining everything: native abstention, a valid semantic <code>unresolved</code> answer and a broken response are distinct events. The constant-unresolved baseline is useful precisely because it makes the no-information strategy visible.</p>
 <!-- block: ch03-diagram-02 -->
 <p><span id="ch03-diagram-02"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
     accTitle: Evaluation separates response validity from useful coverage
     accDescr: An output may be malformed or valid. Valid responses can assert a label that may still be wrong, abstain, or return a semantic unresolved label; a constant-unresolved baseline exposes a no-information strategy.
     Output["Model output"] --&gt;|"malformed"| Broken["Invalid response"]

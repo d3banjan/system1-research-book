@@ -69,6 +69,8 @@ No cross-model speed conclusion follows: OpenJev used quantization and partial C
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Evidence record provenance
 accDescr: A local study record is summarized under a named E identifier; the manuscript reports source-recorded observations with the methods and limitations attached to that record.
@@ -153,6 +155,8 @@ Selection required improved macro recall, at most one newly broken development c
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Expanded study selection and confirmation
 accDescr: Four fixed development conditions support a frozen selection. Baseline and the selected condition are compared on fresh confirmation cases, with repairs and regressions retained.
@@ -236,6 +240,8 @@ These IDs track missing evidence, not incomplete prose. Proposed experiments req
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Proposed evidence task status
 accDescr: A missing-evidence item needs a bounded protocol and resources before an experiment produces a new source record; proposed work is not an executed result.

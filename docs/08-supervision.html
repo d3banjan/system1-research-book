@@ -268,12 +268,13 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <!-- block: ch08-diagram-01 -->
 <p><span id="ch08-diagram-01"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
 accTitle: Four distinct mask jobs
 accDescr: Evaluation eligibility selects comparison fields; a future loss mask selects supervised targets; an attention mask restricts input access; evidence-routing supervision instead trains a specified evidence relationship; and Laya MASK marks the option-scoring position.
     A["Distinct mask jobs"] --&gt; B["Eval selects fields"]
@@ -298,12 +299,13 @@ accDescr: Evaluation eligibility selects comparison fields; a future loss mask s
 <p>Lineage determines the split. Original scenarios, paraphrases, counterfactuals, head rows and derived annotation cards belong together before flattening. Related employer, requisition or conversation records need the same care where applicable. Once I mine a failure to design a prompt or training target, its relatives cannot serve as fresh confirmation of that repair. More rows do not mean more independent evidence.</p>
 <!-- block: ch08-diagram-02 -->
 <p><span id="ch08-diagram-02"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
 accTitle: Group related records before splitting
 accDescr: An original scenario and its paraphrases, counterfactuals, head rows, and derived annotation cards stay in one lineage group, which is assigned wholly to one split.
     A["Original scenario"] --&gt; B["Related variants and cards"]

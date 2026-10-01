@@ -50,6 +50,8 @@ I also want my explanations to earn their complexity. A cheap mental model can b
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Observation stays separate from authority
     accDescr: Supplied text informs a bounded observation. Python checks its scope before policy chooses an action, while uncertainty can lead to review.
@@ -59,7 +61,6 @@ flowchart TD
     Policy -. "uncertain" .-> Review["Request review"]
     Policy --> Record["Record result"]
 ```
-
 Diagram: The proposed boundary lets a local model report an observation while Python checks scope and applies policy; uncertainty remains a reviewable state.
 
 <!-- block: intro-007 -->
@@ -89,6 +90,8 @@ The sixth branch puts annotation on my GPU. Spark finished more requests and ran
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Research draws on several model disciplines
     accDescr: Natural language inference and evidence attribution, retrieval and relevance, selective prediction and abstention, robustness evaluation, proxy judge meta-evaluation, and future adaptation or distillation connect to distinct investigation questions. Tested work, design ideas, and future work are distinguished.
@@ -98,7 +101,6 @@ flowchart TD
     Proxy["Proxy judge meta-evaluation: design"] -->|"checks reference quality"| NLI
     NLI -->|"could inform future"| Adaptation["Adaptation and distillation: future"]
 ```
-
 Diagram: These conceptual links map borrowed tools to questions around one bounded semantic layer; they do not show a chronological pipeline or imply every technique is implemented.
 
 <!-- block: intro-010 -->
@@ -128,6 +130,8 @@ This is the canonical authored book draft. Earlier articles and experiment notes
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Manuscript and public evidence appendix
     accDescr: Research sources inform the canonical draft. Its public evidence appendix reports denominators and limits while omitting private inputs.
@@ -136,7 +140,6 @@ flowchart TD
     Appendix --> Limits["Denominators and limits"]
     Appendix --> Privacy["Private inputs omitted"]
 ```
-
 Diagram: The appendix exposes enough evidence context to qualify claims without publishing private correspondence or machine locations.
 
 <!-- block: intro-013 -->

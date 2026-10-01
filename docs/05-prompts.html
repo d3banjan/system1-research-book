@@ -227,12 +227,13 @@ ul.task-list li input[type="checkbox"] {
 <p>Both checkpoints were stable across the tested paraphrases and distractors, but each began with only four correct labels out of six. The persistent error was attribution. Evidence that Tomas owns a silver key does not deny that Mira owns a copper key. It leaves that claim unresolved. Both models answered denial, and explicit guidance did not fix it. Removing decisive evidence and making decisive edits worked on the simple controls. Stability and correctness had separated in a particularly useful way.</p>
 <!-- block: ch05-diagram-01 -->
 <p><span id="ch05-diagram-01"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
     accTitle: Prompt controls test stability and responsiveness
     accDescr: Meaning-preserving prompt changes should leave the answer stable. An edit to decisive evidence changes what the evidence supports and should change the answer.
     Prompt["Prompt condition"] --&gt; Same["Meaning preserved"]
@@ -268,12 +269,13 @@ ul.task-list li input[type="checkbox"] {
 <p>Duplicate detection remained constant: base said yes to all four cases, typed said no to all four. Each matched two references but failed a different class. The published corpus’s negative-label imbalance was consistent with one possible explanation for typed behavior; it did not establish the cause. An exact comparator could solve these intentionally simple invoice cases. The experiment gave me a reason to preserve deterministic code, alongside a task-specific clue about wording.</p>
 <!-- block: ch05-diagram-02 -->
 <p><span id="ch05-diagram-02"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
     accTitle: Corpus patterns motivate fresh prompt probes
     accDescr: Training material patterns motivate a hypothesis, which is tested on newly authored scenarios. Development cases support selection while confirmation cases are reserved.
     Pattern["Training pattern"] --&gt; Hypothesis["Prompt hypothesis"]

@@ -233,12 +233,13 @@ ul.task-list li input[type="checkbox"] {
 <p>Disagreement is useful data. If one judge interprets a phrase as an explicit denial and another treats it as unresolved, I need to inspect the rubric, evidence scope and possible ambiguity. Collapsing the two votes into a majority label would discard that uncertainty. On the wider study’s confirmation statuses, fourteen of 72 cards had different Astra and Gemini labels. Candidate agreement can shift materially with the chosen reference; that shift belongs in the report.</p>
 <!-- block: ch06-diagram-01 -->
 <p><span id="ch06-diagram-01"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
 accTitle: Four answer dimensions
 accDescr: The same candidate answer is evaluated separately for coverage, evidence support, responsiveness, and compliance.
     A["Candidate answer"] --&gt; B["Requested information covered?"]
@@ -263,12 +264,13 @@ accDescr: The same candidate answer is evaluated separately for coverage, eviden
 <p>The practical payoff is a more useful correction. For the incomplete workshop answer, I can preserve supported assertions and request the missing price. For the invented-price answer, I must correct the evidence failure. A binary <code>bad</code> label loses this distinction and may teach a future model to confuse omission with fabrication. The richer record therefore improves both present diagnosis and the quality of possible future supervision.</p>
 <!-- block: ch06-diagram-02 -->
 <p><span id="ch06-diagram-02"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
 accTitle: Proxy votes and reference limits
 accDescr: Astra and Gemini provide separate votes for a candidate output; retaining both exposes disagreement, while neither vote is human-adjudicated gold.
     A["Candidate output"] --&gt; B["Astra vote"]

@@ -43,6 +43,8 @@ I therefore reduced the model's job to observations about supplied text. For the
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Semantic observation within the workflow
     accDescr: The workflow parses an alert, obtains and validates an observation, applies policy and records an outcome. Unclear evidence can trigger review or a fuller source fetch through the application.
@@ -52,7 +54,6 @@ flowchart TD
     Policy --> Record["Record outcome"]
     Policy -. "review or fetch" .-> Review["Application follow-up"]
 ```
-
 Diagram: Semantic interpretation occupies one seam in the existing workflow; unresolved evidence follows an explicit application path.
 
 <!-- block: ch01-006 -->
@@ -89,6 +90,8 @@ This suggests a contract richer than a bare enum: the observation, evidence scop
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Observable contract around a model result
     accDescr: An observation travels with its evidence scope, source identity and model configuration. Those fields support a validity check before use.
@@ -99,7 +102,6 @@ flowchart TD
     Source --> Gate
     Config --> Gate
 ```
-
 Diagram: The contract supplies observable context for checking a result; it does not rely on private model reasoning.
 
 <!-- block: ch01-010 -->

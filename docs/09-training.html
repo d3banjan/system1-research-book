@@ -230,12 +230,13 @@ ul.task-list li input[type="checkbox"] {
 <p>I am particularly interested in attention-projection adaptation. Query/key changes affect routing; including value/output projections also changes what information is transported and combined. “Attention-only” is therefore insufficient specification. I would record the exact layers and projections, freeze everything else deliberately and compare against a head-only baseline. Attention maps are input-dependent activations, not persistent parameters that can simply be edited into a reusable policy.</p>
 <!-- block: ch09-diagram-01 -->
 <p><span id="ch09-diagram-01"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
 accTitle: Possible training routes
 accDescr: A diagnosed error can motivate alternative interventions: head-only adaptation changes the decision boundary, LoRA changes selected projections, and full training changes all weights.
     A["Diagnosed error"] --&gt; B["Head only: new boundary"]
@@ -262,12 +263,13 @@ accDescr: A diagnosed error can motivate alternative interventions: head-only ad
 <p>Training also needs a target worth learning. Repeated errors, sufficiently trustworthy supervision, grouped splits and a suitable baseline must precede the optimizer. Calibration data must remain separate from training and final evaluation. Any teacher evidence supplied only during training must be absent from the deployment evaluation unless the deployed system truly includes that teacher. Otherwise the experiment answers the wrong engineering question.</p>
 <!-- block: ch09-diagram-02 -->
 <p><span id="ch09-diagram-02"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
 accTitle: Dependencies before a longer run
 accDescr: Before a longer task run, a persistent error needs trustworthy supervision, grouped splits, and a suitable baseline; those prerequisites lead to a short end-to-end smoke test first.
     A["Persistent error"] --&gt; B["Trustworthy supervision"]

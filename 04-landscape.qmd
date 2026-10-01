@@ -56,6 +56,8 @@ The relevance lanes illustrate why I resist a unified ranking. MiniLM, Qwen and 
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Match model interface to the application question
     accDescr: A question about whether evidence supports a claim calls for claim-relation scoring. A question about which passage to inspect calls for relevance ranking; neither score alone decides the final application action.
@@ -66,7 +68,6 @@ flowchart TD
     NLI --> Policy["Backend applies policy"]
     Ranker --> Policy
 ```
-
 Diagram: Claim support and passage relevance are separate measurements; the backend still owns the decision that uses either result.
 
 <!-- block: ch04-007 -->
@@ -96,6 +97,8 @@ Active parameters also differ from stored parameters. A mixture-of-experts model
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Runtime fit depends on more than parameter count
     accDescr: Resident weights, sequence state and working buffers all consume available memory. Advertised context and active parameter count alone do not establish fit; the intended workload needs measurement.
@@ -105,7 +108,6 @@ flowchart TD
     Active["Active parameter count"] -. "not resident total" .-> Memory
     Memory --> Workload["Measure intended workload"]
 ```
-
 Diagram: Parameter arithmetic offers a lower bound, while runtime allocation and the actual workload determine whether a local model fits.
 
 <!-- block: ch04-010 -->

@@ -230,12 +230,13 @@ ul.task-list li input[type="checkbox"] {
 <p>I therefore reduced the model’s job to observations about supplied text. For the fictional alert, an observation might be <code>people_management: not_stated</code>, with the relevant source identifier. Python would decide what to do with an unresolved field: retain the role, request the full description or send it for review. This makes uncertainty actionable without turning it into permission. A sensor may fail; the application must know what that failure means.</p>
 <!-- block: ch01-diagram-01 -->
 <p><span id="ch01-diagram-01"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
     accTitle: Semantic observation within the workflow
     accDescr: The workflow parses an alert, obtains and validates an observation, applies policy and records an outcome. Unclear evidence can trigger review or a fuller source fetch through the application.
     Parse["Parse alert"] --&gt; Observe["Observe text"]
@@ -264,12 +265,13 @@ ul.task-list li input[type="checkbox"] {
 <p>This suggests a contract richer than a bare enum: the observation, evidence scope, source identity, model/configuration identity and validity status travel together. The contract does not need the model’s private reasoning. It needs enough observable information to reconstruct what was asked and reject unsupported use. If the source is incomplete, the backend should preserve that incompleteness.</p>
 <!-- block: ch01-diagram-02 -->
 <p><span id="ch01-diagram-02"></span></p>
-<div class="cell" data-layout-align="default">
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TD
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
     accTitle: Observable contract around a model result
     accDescr: An observation travels with its evidence scope, source identity and model configuration. Those fields support a validity check before use.
     Result["Observation"] --&gt; Scope["Evidence scope"]

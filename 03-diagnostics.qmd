@@ -43,6 +43,8 @@ This result made an attractive shortcut untenable: I could not use schema validi
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Evidence relation separates contradiction from uncertainty
     accDescr: Supplied evidence can support a claim, contradict it, or leave it unresolved. Missing evidence remains distinct from a denial.
@@ -51,7 +53,6 @@ flowchart TD
     Relation --> Contradiction["Contradicts claim"]
     Relation --> Unresolved["Leaves claim unresolved"]
 ```
-
 Diagram: The three relations keep absence of evidence distinct from evidence that denies a claim.
 
 <!-- block: ch03-006 -->
@@ -88,6 +89,8 @@ I do not interpret zero observed unsupported assertions as zero risk. The sample
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Evaluation separates response validity from useful coverage
     accDescr: An output may be malformed or valid. Valid responses can assert a label that may still be wrong, abstain, or return a semantic unresolved label; a constant-unresolved baseline exposes a no-information strategy.
@@ -97,7 +100,6 @@ flowchart TD
     Valid --> Abstain["Native abstention"]
     Valid --> Unresolved["Semantic unresolved"]
 ```
-
 Diagram: Separating malformed, abstaining and unresolved outcomes prevents schema failure or universal non-answering from counting as useful semantic coverage.
 
 <!-- block: ch03-010 -->

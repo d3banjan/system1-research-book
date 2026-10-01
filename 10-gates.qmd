@@ -36,6 +36,8 @@ Then I would freeze the task, inputs, source identities, rubric, native request,
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Evidence gates before admission
 accDescr: Define the consequence-specific error budget, freeze the task and baselines, select on development groups, lock the selection, then use untouched confirmation to decide whether evidence supports admission or remains insufficient.
@@ -89,6 +91,8 @@ Any eventual admission should be narrow and reversible. The model supplies an ob
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Python controls the action gate
 accDescr: The model returns an observation to Python, which checks evidence scope, policy, and authority before allowing a narrow action; if checks fail, the observation is not admitted.

@@ -43,6 +43,8 @@ I am particularly interested in attention-projection adaptation. Query/key chang
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Possible training routes
 accDescr: A diagnosed error can motivate alternative interventions: head-only adaptation changes the decision boundary, LoRA changes selected projections, and full training changes all weights.
@@ -86,6 +88,8 @@ Training also needs a target worth learning. Repeated errors, sufficiently trust
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Dependencies before a longer run
 accDescr: Before a longer task run, a persistent error needs trustworthy supervision, grouped splits, and a suitable baseline; those prerequisites lead to a short end-to-end smoke test first.

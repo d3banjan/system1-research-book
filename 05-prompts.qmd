@@ -36,6 +36,8 @@ Both checkpoints were stable across the tested paraphrases and distractors, but 
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Prompt controls test stability and responsiveness
     accDescr: Meaning-preserving prompt changes should leave the answer stable. An edit to decisive evidence changes what the evidence supports and should change the answer.
@@ -44,7 +46,6 @@ flowchart TD
     Edit["Decisive evidence edit"] --> Changed["Meaning changes"]
     Changed --> Responsive["Expect changed answer"]
 ```
-
 Diagram: The probe separates stability under paraphrases and distractors from responsiveness to evidence changes.
 
 <!-- block: ch05-005 -->
@@ -88,6 +89,8 @@ Duplicate detection remained constant: base said yes to all four cases, typed sa
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Corpus patterns motivate fresh prompt probes
     accDescr: Training material patterns motivate a hypothesis, which is tested on newly authored scenarios. Development cases support selection while confirmation cases are reserved.
@@ -96,7 +99,6 @@ flowchart TD
     Fresh --> Development["Development selection"]
     Development --> Confirmation["Reserved confirmation"]
 ```
-
 Diagram: Corpus inspection shaped a hypothesis, while fresh development and reserved confirmation cases provide separate checks.
 
 <!-- block: ch05-010 -->

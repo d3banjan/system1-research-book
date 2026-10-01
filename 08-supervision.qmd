@@ -55,6 +55,8 @@ Four different meanings of “mask” now matter. They affect different stages a
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Four distinct mask jobs
 accDescr: Evaluation eligibility selects comparison fields; a future loss mask selects supervised targets; an attention mask restricts input access; evidence-routing supervision instead trains a specified evidence relationship; and Laya MASK marks the option-scoring position.
@@ -92,6 +94,8 @@ Lineage determines the split. Original scenarios, paraphrases, counterfactuals, 
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Group related records before splitting
 accDescr: An original scenario and its paraphrases, counterfactuals, head rows, and derived annotation cards stay in one lineage group, which is assigned wholly to one split.

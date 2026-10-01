@@ -99,6 +99,8 @@ Spark made the cost question more concrete. Faster completion can reduce one exp
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Spark pilot outcomes by mode
 accDescr: Twelve attempts in each mode yielded one accepted thinking output with eleven budget failures, and seven accepted nonthinking outputs with five citation-invalid outputs.
@@ -109,5 +111,4 @@ accDescr: Twelve attempts in each mode yielded one accepted thinking output with
     E --> F["7 accepted of 12"]
     E --> G["5 citation-invalid"]
 ```
-
 Diagram: This records pipeline outcomes by mode; semantic agreement was computed only on the selected valid nonthinking outputs.

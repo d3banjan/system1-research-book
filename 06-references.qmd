@@ -50,6 +50,8 @@ Disagreement is useful data. If one judge interprets a phrase as an explicit den
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Four answer dimensions
 accDescr: The same candidate answer is evaluated separately for coverage, evidence support, responsiveness, and compliance.
@@ -58,7 +60,6 @@ accDescr: The same candidate answer is evaluated separately for coverage, eviden
     A --> D["Right request and referent?"]
     A --> E["Target follows constraints?"]
 ```
-
 Diagram: The four dimensions branch from one answer because each diagnoses a different kind of repair.
 
 <!-- block: ch06-007 -->
@@ -88,6 +89,8 @@ The practical payoff is a more useful correction. For the incomplete workshop an
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
 accTitle: Proxy votes and reference limits
 accDescr: Astra and Gemini provide separate votes for a candidate output; retaining both exposes disagreement, while neither vote is human-adjudicated gold.
@@ -97,7 +100,6 @@ accDescr: Astra and Gemini provide separate votes for a candidate output; retain
     C --> D
     D --> E["No human gold yet"]
 ```
-
 Diagram: Separate proxy votes preserve disagreement and keep the reference limitation visible.
 
 <!-- block: ch06-010 -->

@@ -43,6 +43,8 @@ Several questions about the same state become separate model rows that can share
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Option markers produce a bounded score distribution
     accDescr: The request includes option-position markers before encoding. The encoder and decision layers produce contextual representations from those positions, which are gathered into option scores and normalized with softmax.
@@ -51,7 +53,6 @@ flowchart TD
     Markers --> Scores["One score per option"]
     Scores --> Softmax["Distribution over options"]
 ```
-
 Diagram: The marker positions address option readouts; softmax ranks the supplied choices but does not establish that the choice is supported by evidence.
 
 <!-- block: ch02-006 -->
@@ -88,6 +89,8 @@ I can now refine the backend analogy. This is a learned measurement service with
 
 
 ```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
     accTitle: Interface checks and task evaluation answer different questions
     accDescr: The serializer fits a request to its input budget, then the model returns an output. Shape validation checks interface form; task evaluation checks whether the measurement is useful.
@@ -96,7 +99,6 @@ flowchart TD
     Model --> Shape["Validate output shape"]
     Shape --> Task["Evaluate task value"]
 ```
-
 Diagram: A valid response shape establishes interface compliance; only task evaluation tests whether the measurement helps.
 
 <!-- block: ch02-010 -->
