@@ -1,0 +1,73 @@
+---
+title: "10. Earn a place in the harness"
+---
+
+
+<!-- block: ch10-001 -->
+
+[]{#ch10-001}
+
+
+
+<!-- block: ch10-002 -->
+
+[]{#ch10-002}
+
+
+The investigation has not produced a production replacement. It has produced something more specific than a vague failure: a tested boundary, preserved negative results, candidate reference annotations and a set of smaller questions. I can now say what evidence would change my decision. That is a useful engineering outcome even while the active workflow remains unchanged.
+
+<!-- block: ch10-003 -->
+
+[]{#ch10-003}
+
+
+I would begin with the consuming operation. What happens when this observation is wrong? Which errors are harmful, and how much useful recall or coverage makes the component worth running? A sensor used to order a review queue has a different contract from one used to discard an opportunity. A single global accuracy threshold would blur those consequences. The numeric error budget remains a future policy decision, not a number to invent after seeing a promising model.
+
+<!-- block: ch10-004 -->
+
+[]{#ch10-004}
+
+
+Then I would freeze the task, inputs, source identities, rubric, native request, output validation and baselines. Deterministic checks and constant/deferral strategies deserve explicit comparison. Candidate selection and threshold tuning belong on development groups. Only after selection is locked should untouched confirmation groups assess the proposed route. If the uncertainty remains too wide, the honest outcome is insufficient evidence, not an extrapolated guarantee.
+
+<!-- block: ch10-005 -->
+
+[]{#ch10-005}
+
+
+Risk and coverage should appear together. Selective risk asks how often accepted judgments are wrong under the specified reference. Useful coverage asks how much work those accepted judgments accomplish. A threshold can reduce the first by abandoning the second. I also need per-category unsupported assertions and polarity recall, because an aggregate curve can hide a disastrous subgroup. Invalid outputs, abstentions and valid unresolved labels remain distinct throughout.
+
+<!-- block: ch10-006 -->
+
+[]{#ch10-006}
+
+
+Proxy references set a limit on the claim. Their agreement can guide development and expose clear failures, but a production gate needs independently adjudicated evidence appropriate to the consequences. Calibration must be assessed on the target distribution. Related scenarios require grouped uncertainty; repeated prompt variants cannot make confidence intervals artificially narrow. Even observing no harmful errors leaves a nonzero upper risk bound.
+
+<!-- block: ch10-007 -->
+
+[]{#ch10-007}
+
+
+Cost is equally task-specific. I would include loading, prefill, output tokens, failed requests, latency tails, memory and review time. A local model that is faster per call can still be more expensive per useful annotation. Hardware comparisons must preserve quantization, offload, context and concurrency. The Spark pilot provides an operational observation, while the wider landscape supplies hypotheses awaiting measurement.
+
+<!-- block: ch10-008 -->
+
+[]{#ch10-008}
+
+
+The next work has a dependency order without requiring a linear research story. Resolve candidate identities and native constraints. Define the consuming error budget. Improve reference quality. Test the smallest diagnosed prompt or task-boundary hypothesis. Revisit adaptation only if a persistent error and usable supervision justify it. The [future-work ledger](evidence.qmd#future-work) records these gaps as actual evidence tasks; they are not unfinished chapter prose or promises that an experiment will succeed.
+
+<!-- block: ch10-009 -->
+
+[]{#ch10-009}
+
+
+Any eventual admission should be narrow and reversible. The model supplies an observation; Python checks evidence scope, policy and authority before taking action. A replacement sensor must be replayable and removable. Changing a checkpoint, prompt, rubric or source distribution can invalidate the evidence that supported admission, so those changes require a proportionate reevaluation rather than inheriting permanent trust.
+
+<!-- block: ch10-010 -->
+
+[]{#ch10-010}
+
+
+I began by trying to transfer a workflow into one typed choice. I now have a more demanding and more testable goal: make one semantic operation cheap enough, useful enough and bounded enough for a particular place in the application. The simplest component that meets that contract is enough. When it fails, the next refinement should answer the failure I measured.

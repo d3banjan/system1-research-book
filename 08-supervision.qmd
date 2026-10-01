@@ -1,0 +1,78 @@
+---
+title: "8. Build examples worth learning from"
+---
+
+
+<!-- block: ch08-001 -->
+
+[]{#ch08-001}
+
+
+
+<!-- block: ch08-002 -->
+
+[]{#ch08-002}
+
+
+The experiments are producing a corpus, but “dataset” can imply more readiness than I have earned. I currently have candidate annotations, source records and failure diagnoses. I do not have a certified training set. The general annotation factory remains a specification; small scripts that preserve its rules do not amount to a deployed factory.
+
+<!-- block: ch08-003 -->
+
+[]{#ch08-003}
+
+
+A useful example preserves the question, supplied evidence, source identifiers, scenario group, rubric version, each reference vote, candidate prediction and validation result. It can add proposed evidence spans, counterfactual relationships and a failure tag. For the key-ownership example, a tag such as `wrong_subject` records a behavioral diagnosis. It does not identify a neuron, prove an attention defect or prescribe the training method that will repair it.
+
+<!-- block: ch08-004 -->
+
+[]{#ch08-004}
+
+
+For the workshop example, rich supervision keeps supported assertions separate from missing requested information. One dimension might be usable while another remains disputed. A single positive/negative label would force me to lose that distinction or invent certainty. Separate votes and lineage let me revisit the record after improving the rubric, without rewriting history to make the old labels look cleaner.
+
+<!-- block: ch08-005 -->
+
+[]{#ch08-005}
+
+
+Four different meanings of “mask” now matter. They affect different stages and must never be inferred from one another:
+
+<!-- block: ch08-006 -->
+
+[]{#ch08-006}
+
+
+| Mask | Job | What it does not imply |
+| --- | --- | --- |
+| Annotation/evaluation eligibility mask | Select fields with a usable reference for a particular comparison | Invalid attempts disappear from operational counts |
+| Future loss mask | Select supervised targets that contribute to an objective | Every available vote is trustworthy supervision |
+| Attention mask or evidence-routing supervision | Restrict access to input positions or train a specified evidence relationship | A proposed evidence span already implements a training intervention |
+| Laya option `[MASK]` marker | Identify the contextual position read by the option scorer | An evidence restriction or missing target |
+
+<!-- block: ch08-007 -->
+
+[]{#ch08-007}
+
+
+An unresolved reference is often a valid target, not a missing annotation. A malformed judge output is different. In evaluation, I can exclude that judge's unusable field from a semantic denominator while still counting its failed attempt. In future training, I might withhold a disputed field, adjudicate it or use a justified soft target. Disagreement does not automatically define a probability distribution suitable for a loss.
+
+<!-- block: ch08-008 -->
+
+[]{#ch08-008}
+
+
+Evidence tags need similar restraint. Restricting attention to a highlighted span might remove a negation, a pronoun antecedent or a conflicting sentence. An auxiliary evidence objective is different from a hard attention restriction. High attention on a token does not by itself demonstrate causal use. If teacher annotations appear only during training, the student must also be trained and evaluated for its intended annotation-free deployment path; otherwise I have changed the input contract.
+
+<!-- block: ch08-009 -->
+
+[]{#ch08-009}
+
+
+Lineage determines the split. Original scenarios, paraphrases, counterfactuals, head rows and derived annotation cards belong together before flattening. Related employer, requisition or conversation records need the same care where applicable. Once I mine a failure to design a prompt or training target, its relatives cannot serve as fresh confirmation of that repair. More rows do not mean more independent evidence.
+
+<!-- block: ch08-010 -->
+
+[]{#ch08-010}
+
+
+The practical artifact is a revisable evidence record, not a verdict dump. It supports error analysis today and leaves training choices explicit for later. That brings me to [Chapter 9](09-training.qmd): which intervention would answer a diagnosed question, and what would make running it justified?

@@ -1,0 +1,240 @@
+[
+  {
+    "public_sha256": "f23919ef42cdfd8ff778848e7cf255c862ed602785c5db2bfa2868f725e82abc",
+    "sha256": "252866fb89ab9a591b3d04b1a7cc67828b9cd858698b5aeec1b934f4c04b09aa",
+    "source": "assets/spark-operations.png",
+    "transform": "strip-png-ancillary-except-transparency",
+    "type": "asset"
+  },
+  {
+    "public_sha256": "799d2cd9908745b67cb552244ae32632331d1d5ba857b59ea19258a71b18e301",
+    "sha256": "b2e49e98795971e77cb62f5d479d4d3db49fdad9fbc9c70f06ac64f41972ab67",
+    "source": "assets/spark-dimensions.png",
+    "transform": "strip-png-ancillary-except-transparency",
+    "type": "asset"
+  },
+  {
+    "public_sha256": "5e7c1ca83dd247ea7d9c5e74c0ebdff91810d1c298929b8014df5c2c46b6b696",
+    "sha256": "f4292c78d25873fe823121127573bb3d789cffe4ec1d74135e15279cb4971510",
+    "source": "assets/prompt-controls.png",
+    "transform": "strip-png-ancillary-except-transparency",
+    "type": "asset"
+  },
+  {
+    "blocks": [
+      "intro-001",
+      "intro-002",
+      "intro-003",
+      "intro-004",
+      "intro-005",
+      "intro-006",
+      "intro-007",
+      "intro-008",
+      "intro-009",
+      "intro-010",
+      "intro-011",
+      "intro-012",
+      "intro-013"
+    ],
+    "sha256": "a3bf244edd0642c4f224afcb025375d0338b4632b4a33f4f3a4d26a1e68c3383",
+    "source": "index.md"
+  },
+  {
+    "blocks": [
+      "ch01-001",
+      "ch01-002",
+      "ch01-003",
+      "ch01-004",
+      "ch01-005",
+      "ch01-006",
+      "ch01-007",
+      "ch01-008",
+      "ch01-009",
+      "ch01-010",
+      "ch01-011"
+    ],
+    "sha256": "7f60622ea6b41bdd8b56e5a1c445d5d73600526d2166a025fd760e487d48dc94",
+    "source": "01-workflow.md"
+  },
+  {
+    "blocks": [
+      "ch02-001",
+      "ch02-002",
+      "ch02-003",
+      "ch02-004",
+      "ch02-005",
+      "ch02-006",
+      "ch02-007",
+      "ch02-008",
+      "ch02-009",
+      "ch02-010"
+    ],
+    "sha256": "d9470b10f39bd06bdbde6db9796d75e66fc0bc920b7792d0fdf7a0ec9a2bcd9d",
+    "source": "02-instrument.md"
+  },
+  {
+    "blocks": [
+      "ch03-001",
+      "ch03-002",
+      "ch03-003",
+      "ch03-004",
+      "ch03-005",
+      "ch03-006",
+      "ch03-007",
+      "ch03-008",
+      "ch03-009",
+      "ch03-010"
+    ],
+    "sha256": "c205dbea6a80101bb75e2630ec02d0085092eb1b372640d0407dd97b3c0ac21b",
+    "source": "03-diagnostics.md"
+  },
+  {
+    "blocks": [
+      "ch04-001",
+      "ch04-002",
+      "ch04-003",
+      "ch04-004",
+      "ch04-005",
+      "ch04-006",
+      "ch04-007",
+      "ch04-008",
+      "ch04-009",
+      "ch04-010"
+    ],
+    "sha256": "af60d5fb908578628d0e8de67c86f3ea1ad5b729cd630b33962a6b4f130c6086",
+    "source": "04-landscape.md"
+  },
+  {
+    "blocks": [
+      "ch05-001",
+      "ch05-002",
+      "ch05-003",
+      "ch05-004",
+      "ch05-005",
+      "ch05-006",
+      "ch05-007",
+      "ch05-008",
+      "ch05-009",
+      "ch05-010",
+      "ch05-011"
+    ],
+    "sha256": "ac467d5e8035fd0a758aaabbd3d78ae793953322803662cc268e3e8ca7a80d5e",
+    "source": "05-prompts.md"
+  },
+  {
+    "blocks": [
+      "ch06-001",
+      "ch06-002",
+      "ch06-003",
+      "ch06-004",
+      "ch06-005",
+      "ch06-006",
+      "ch06-007",
+      "ch06-008",
+      "ch06-009",
+      "ch06-010"
+    ],
+    "sha256": "659c00a255254c340f94db481618d10a87d8f2ea507a216b89922e130b5197d7",
+    "source": "06-references.md"
+  },
+  {
+    "blocks": [
+      "ch07-001",
+      "ch07-002",
+      "ch07-003",
+      "ch07-004",
+      "ch07-005",
+      "ch07-006",
+      "ch07-007",
+      "ch07-008",
+      "ch07-009",
+      "ch07-010",
+      "ch07-011",
+      "ch07-012",
+      "ch07-013"
+    ],
+    "sha256": "c58596f9d45f234a6608ecb205108c955718ea80aab350e4129f410b7844fa3b",
+    "source": "07-spark.md"
+  },
+  {
+    "blocks": [
+      "ch08-001",
+      "ch08-002",
+      "ch08-003",
+      "ch08-004",
+      "ch08-005",
+      "ch08-006",
+      "ch08-007",
+      "ch08-008",
+      "ch08-009",
+      "ch08-010"
+    ],
+    "sha256": "4a35da2d5e5f43aa265141ac7a3806cbacc637de3d79179846e205432fbab6e9",
+    "source": "08-supervision.md"
+  },
+  {
+    "blocks": [
+      "ch09-001",
+      "ch09-002",
+      "ch09-003",
+      "ch09-004",
+      "ch09-005",
+      "ch09-006",
+      "ch09-007",
+      "ch09-008",
+      "ch09-009",
+      "ch09-010"
+    ],
+    "sha256": "d05627fad0b9ec9c6af50b13bda4dedcf7dec163e8b5545365fe64e1f56cc6ab",
+    "source": "09-training.md"
+  },
+  {
+    "blocks": [
+      "ch10-001",
+      "ch10-002",
+      "ch10-003",
+      "ch10-004",
+      "ch10-005",
+      "ch10-006",
+      "ch10-007",
+      "ch10-008",
+      "ch10-009",
+      "ch10-010"
+    ],
+    "sha256": "0d7bd808663531242de796fdd961992c2e1d281079791b0b5da2026892829241",
+    "source": "10-gates.md"
+  },
+  {
+    "blocks": [
+      "evidence-001",
+      "evidence-002",
+      "evidence-003",
+      "evidence-004",
+      "evidence-005",
+      "evidence-006",
+      "evidence-007",
+      "evidence-008",
+      "evidence-009",
+      "evidence-010",
+      "evidence-011",
+      "evidence-012",
+      "evidence-013",
+      "evidence-014",
+      "evidence-015",
+      "evidence-016",
+      "evidence-017",
+      "evidence-018",
+      "evidence-019",
+      "evidence-020",
+      "evidence-021",
+      "evidence-022",
+      "evidence-023",
+      "evidence-024",
+      "evidence-025",
+      "evidence-026",
+      "evidence-027"
+    ],
+    "sha256": "fb0d7738ad3c260563e200b3fafb2b474415401cfa41418e6e52dc01bdd3acb3",
+    "source": "evidence.md"
+  }
+]

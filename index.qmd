@@ -1,0 +1,104 @@
+---
+title: "Introduction"
+---
+
+
+<!-- block: intro-001 -->
+
+[]{#intro-001}
+
+
+
+<!-- block: intro-002 -->
+
+[]{#intro-002}
+
+
+First draft · research as of 2026-10-01
+
+<!-- block: intro-003 -->
+
+[]{#intro-003}
+
+
+I started with a working job-search workflow. It reads alerts, extracts facts, checks history, applies rules and identifies what needs attention. Most of this is familiar Python backend work: parsing, lookups, exact comparisons and state transitions. The expensive part is interpreting language. Does an advertised role include managing people? Does a passage promise sponsorship, deny it, or say nothing? Does an answer supply the information requested and support what it claims?
+
+<!-- block: intro-004 -->
+
+[]{#intro-004}
+
+
+I wanted those semantic operations to become cheap, local functions I could test. My first attempt compressed too much into one call: I gave Laya a workflow and asked it to choose `drop` or `survive`. It returned `survive` for all 300 historical roles. Perfect survivor recall was available from a constant function. I had obtained an allowed answer without transferring the workflow. That failure is the starting point of this book. [Evidence E01](evidence.qmd#e01-workflow-and-sparse-evidence)
+
+<!-- block: intro-005 -->
+
+[]{#intro-005}
+
+
+The question became more precise: can a small local model provide useful observations while Python retains policy, provenance, history and final authority? I call that proposed component “System 1.” This names an operational role, not a claim that a checkpoint reproduces human cognition. A generative worker or reviewer sometimes occupies the complementary “System 2” role. Neither name is an evaluation result.
+
+<!-- block: intro-006 -->
+
+[]{#intro-006}
+
+
+I also want my explanations to earn their complexity. A cheap mental model can be enough to make the next engineering decision. When an observed failure exposes its limits, I can refine it. That deliberate simplification differs from accepting unsupported model predictions. Predictions require an error budget: which mistakes matter, what their consequences are, and how much useful recall or coverage the component must retain. “Never answer” and “always assert” can both fail the contract.
+
+<!-- block: intro-007 -->
+
+[]{#intro-007}
+
+
+Eight branches developed around this question. The first is the workflow boundary: which judgments can be separated from policy? The second is the model interface: bounded options, extracted spans, claim support and passage relevance are different measurements. The third is zero-shot behavior: what changes when I alter wording, keys, distractors or evidence? These branches help me decide whether an apparent model failure is partly a poorly specified request.
+
+<!-- block: intro-008 -->
+
+[]{#intro-008}
+
+
+The fourth branch defines answer quality. Requested-information coverage, evidence support, responsiveness and compliance can disagree, so I need separate judgments. The fifth asks where their reference labels come from. Independent model annotations improve the evidence available for debugging, but remain proxy references. Shared mistakes and disagreements survive a vote. Neither a fluent explanation nor model confidence supplies human ground truth.
+
+<!-- block: intro-009 -->
+
+[]{#intro-009}
+
+
+The sixth branch puts annotation on my GPU. Spark finished more requests and ran faster when I disabled native thinking, but several judgments assessed its own output format instead of the target answer. The seventh branch preserves these failures as richer candidate supervision: source lineage, separate votes, missing labels, failure tags and proposed evidence spans. It also forces a distinction between evaluation masks, loss masks, attention masks and Laya's option-position `[MASK]` tokens. The eighth sets the gate: what evidence would justify admitting any observation into the active harness?
+
+<!-- block: intro-010 -->
+
+[]{#intro-010}
+
+
+These branches overlap. Better references can expose a prompt defect. A better prompt might remove the need for adaptation. A cheap local judge might generate candidate labels while creating a new adjudication burden. The chapter sequence makes this investigation readable; it does not imply a linear chronology from failed prompt to successful fine-tuning.
+
+<!-- block: intro-011 -->
+
+[]{#intro-011}
+
+
+At this release, diagnostic runs, a wider native-interface comparison, prompt probes and a Spark pilot exist. No task fine-tuning has started. Synthetic optimizer and memory probes establish limited feasibility, not learned task performance. The expanded prompt study has prepared scenarios and reviewed references but reports no inference results in its current record. The general annotation factory remains a parked specification. None of these experiments has replaced the production workflow.
+
+<!-- block: intro-012 -->
+
+[]{#intro-012}
+
+
+This is the canonical authored book draft. Earlier articles and experiment notes remain research sources, rather than chapter copies to synchronize. The public evidence appendix gives short identifiers, denominators and limits; it deliberately does not expose private inputs or machine locations. Synthetic examples below illustrate the same distinctions without reproducing private correspondence.
+
+<!-- block: intro-013 -->
+
+[]{#intro-013}
+
+
+1. [Start with a working workflow](01-workflow.qmd)
+2. [What a decision model returns](02-instrument.qmd)
+3. [Test the instrument](03-diagnostics.qmd)
+4. [Choose an interface before a model](04-landscape.qmd)
+5. [Keep the prompt branch open](05-prompts.qmd)
+6. [Separate the dimensions of an answer](06-references.qmd)
+7. [Put the annotator on my GPU](07-spark.qmd)
+8. [Build examples worth learning from](08-supervision.qmd)
+9. [When training would be justified](09-training.qmd)
+10. [Earn a place in the harness](10-gates.qmd)
+11. [Evidence and future-work ledger](evidence.qmd)

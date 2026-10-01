@@ -1,0 +1,73 @@
+---
+title: "2. What a decision model returns"
+---
+
+
+<!-- block: ch02-001 -->
+
+[]{#ch02-001}
+
+
+
+<!-- block: ch02-002 -->
+
+[]{#ch02-002}
+
+
+My cheapest useful mental model for Laya is a reader followed by an option scorer. The reader turns the request into contextual representations. The scorer compares the supplied choices and returns a distribution over them. It does not compose a chat response. This explains the appealing interface: the answer can stay inside an allowed set. It also explains the missing guarantee: nothing about membership in that set establishes that the chosen option follows from the evidence.
+
+<!-- block: ch02-003 -->
+
+[]{#ch02-003}
+
+
+The tested stack uses ModernBERT-large, a bidirectional encoder, with additional decision machinery. The model card reports about 421 million parameters in total. “Bidirectional” means a token representation can incorporate surrounding request text; it does not mean the model executes every written instruction as a program. The options and criteria are inputs whose relationships to evidence must have been learned. [ModernBERT paper](https://arxiv.org/abs/2412.13663), [Laya checkpoint card](https://huggingface.co/convaiinnovations/laya-typed-decisions)
+
+<!-- block: ch02-004 -->
+
+[]{#ch02-004}
+
+
+The versioned implementation places a `[MASK]` marker at each option position. After encoding and the extra decision layers, it gathers those marker representations, produces one scalar score per option and normalizes the scores with softmax. The marker is an address for the readout. It is not asking the language model to fill a missing word, and it is not an instruction to hide evidence. [Laya implementation](https://github.com/NandhaKishorM/laya/blob/v0.3.21/laya/common.py)
+
+<!-- block: ch02-005 -->
+
+[]{#ch02-005}
+
+
+Several questions about the same state become separate model rows that can share a batched forward call. The employment question does not consume the management question's answer. Each is conditioned on the original state and its own question. That distinction matters if I want an answer to depend on an earlier result: the dependency must be implemented in the surrounding pipeline or in a changed architecture. Batching independent rows does not create deliberation between them. [Batching implementation](https://github.com/NandhaKishorM/laya/blob/v0.3.21/laya/agent.py)
+
+<!-- block: ch02-006 -->
+
+[]{#ch02-006}
+
+
+Request space is another part of the instrument. The inspected typed configuration has a 1,024-token total budget and a 256-token head budget; the versioned serializer also caps individual option descriptions. Longer instructions and longer options compete with evidence. A request can be structurally valid after shortening while losing the words that distinguish two options or establish a claim. I therefore need actual token and truncation diagnostics, not a character-count estimate. These are properties of that inspected configuration, not universal limits of every Laya release. [Serialization source](https://github.com/NandhaKishorM/laya/blob/v0.3.21/laya/common.py)
+
+<!-- block: ch02-007 -->
+
+[]{#ch02-007}
+
+
+The checkpoint is part of the contract too. The typed specialization was built around particular synthetic workflows. A schema that resembles those workflows does not make a new job-search task in-domain. “Typed” describes the interface and specialization; it does not mean universally competent at typed business questions. This is why I retain exact model and runtime identities alongside a result instead of reporting that “Laya” passed or failed in the abstract. [Specialist model card](https://huggingface.co/convaiinnovations/laya-typed-decisions)
+
+<!-- block: ch02-008 -->
+
+[]{#ch02-008}
+
+
+Confidence needs equally careful naming. In the inspected implementation, `answer_confidence` is the largest post-temperature option probability. For choice and score tasks, `confidence` measures concentration through normalized entropy. A concentrated distribution can be concentrated on an unsupported answer. Neither field automatically estimates correctness on my domain. Temperature fitting may improve calibration on suitable data, but it cannot restore missing evidence or create a semantic distinction the scores do not contain. [Scoring implementation](https://github.com/NandhaKishorM/laya/blob/v0.3.21/laya/common.py)
+
+<!-- block: ch02-009 -->
+
+[]{#ch02-009}
+
+
+I can now refine the backend analogy. This is a learned measurement service with a serializer, limited input budget, trained readout and domain-dependent score behavior. Type checking catches malformed use of the interface. Task evaluation determines whether the measurement is useful. Keeping those checks separate lets me diagnose a failure without pretending every wrong answer is a parsing bug or every clean response is reliable.
+
+<!-- block: ch02-010 -->
+
+[]{#ch02-010}
+
+
+[Chapter 3](03-diagnostics.qmd) uses this understanding to test the instrument: first with simple controls, then with sparse real evidence, and finally with narrower claim formulations.

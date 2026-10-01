@@ -1,0 +1,80 @@
+---
+title: "1. Start with a working workflow"
+---
+
+
+<!-- block: ch01-001 -->
+
+[]{#ch01-001}
+
+
+
+<!-- block: ch01-002 -->
+
+[]{#ch01-002}
+
+
+The tempting transfer was easy to describe. I already had a workflow that could explain why a role needed attention. A model accepted structured state and returned a typed choice. If I supplied enough of the workflow's rules, perhaps that choice could become its final disposition. The interface looked like a function replacement. What I actually proposed was replacing several different functions, their stored history and their authority with one prediction.
+
+<!-- block: ch01-003 -->
+
+[]{#ch01-003}
+
+
+Consider a fictional alert saying that a company wants an engineer to “lead the platform migration.” The phrase might describe technical responsibility. It does not necessarily mean the engineer will manage employees. Whether people management makes the role unsuitable is another question, owned by application policy. Whether I previously applied is a database lookup. Whether the alert is quoting an old vacancy is a provenance question. A single `drop` or `survive` answer hides which of those operations failed.
+
+<!-- block: ch01-004 -->
+
+[]{#ch01-004}
+
+
+I learned this boundary through a blunt result. Laya retained all 300 historical roles. Reversing the options changed none of the decisions. Adding policy and candidate context also changed none. These controls ruled out those particular repairs on that fixture; they did not identify the internal cause. The useful conclusion was that this configuration had not reproduced the workflow. Calling the result high recall would conceal the absence of filtering. [Evidence E01](evidence.qmd#e01-workflow-and-sparse-evidence)
+
+<!-- block: ch01-005 -->
+
+[]{#ch01-005}
+
+
+I therefore reduced the model's job to observations about supplied text. For the fictional alert, an observation might be `people_management: not_stated`, with the relevant source identifier. Python would decide what to do with an unresolved field: retain the role, request the full description or send it for review. This makes uncertainty actionable without turning it into permission. A sensor may fail; the application must know what that failure means.
+
+<!-- block: ch01-006 -->
+
+[]{#ch01-006}
+
+
+The first useful design is deliberately ordinary. Parse the input. Preserve its identity. Ask one bounded semantic question. Validate the returned shape and provenance. Apply explicit policy to the observation. Record the result. I do not need a framework to express that sequence. I need an inspectable seam where I can replace the sensor, replay a request and compare its output against a reference without triggering an external action.
+
+<!-- block: ch01-007 -->
+
+[]{#ch01-007}
+
+
+Some work should remain exact. Deduplication against a known identifier, salary arithmetic and recorded application history already have deterministic implementations. Asking a model to rediscover them creates an unnecessary failure surface. Language interpretation is different: an exact string search may miss a paraphrase or confuse technical leadership with management. The model earns consideration where that semantic ambiguity exists, not wherever the application happens to process text.
+
+<!-- block: ch01-008 -->
+
+[]{#ch01-008}
+
+
+Even the observation boundary needs care. A quoted span can be genuinely present but refer to another person or another role. Substring validation proves that I did not fabricate the quote; it does not prove the quote supports the field. Conversely, absence from a short alert does not prove absence from the full description. I must carry the scope of the evidence through the system instead of letting a local prediction become a global fact.
+
+<!-- block: ch01-009 -->
+
+[]{#ch01-009}
+
+
+This suggests a contract richer than a bare enum: the observation, evidence scope, source identity, model/configuration identity and validity status travel together. The contract does not need the model's private reasoning. It needs enough observable information to reconstruct what was asked and reject unsupported use. If the source is incomplete, the backend should preserve that incompleteness.
+
+<!-- block: ch01-010 -->
+
+[]{#ch01-010}
+
+
+My stopping rule also changes. I am no longer trying to make one model “understand the workflow.” I am trying to make one observation useful within a consequence-specific error budget. A field used only to prioritize manual review may tolerate different errors from a field that excludes a role. The threshold belongs to that use and must be declared before I select a favorable result.
+
+<!-- block: ch01-011 -->
+
+[]{#ch01-011}
+
+
+The next question is what the instrument computes. A typed return value is helpful, but its meaning comes from a trained model and a particular request encoding. [Chapter 2](02-instrument.qmd) opens that interface just far enough to explain why a valid answer can still be unsupported.

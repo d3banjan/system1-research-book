@@ -1,0 +1,73 @@
+---
+title: "6. Separate the dimensions of an answer"
+---
+
+
+<!-- block: ch06-001 -->
+
+[]{#ch06-001}
+
+
+
+<!-- block: ch06-002 -->
+
+[]{#ch06-002}
+
+
+“Is this a good answer?” sounds like one question until I try to debug a negative label. Consider this synthetic request: “Give the workshop date and price in one sentence.” The supplied evidence says that it runs on Tuesday and costs twenty euros. An answer saying “The workshop runs on Tuesday” is supported but incomplete. An answer supplying Tuesday and thirty euros covers the requested fields while inventing the price. A relevance score alone cannot distinguish the two failures.
+
+<!-- block: ch06-003 -->
+
+[]{#ch06-003}
+
+
+I use four dimensions because each changes a different decision about repair. Coverage asks which requested information units are addressed. Evidence support asks whether the assertions actually made have support. Responsiveness asks whether the answer engages the request and its intended referent. Compliance asks whether the target answer follows constraints such as format. An answer may fail several at once, but that does not make them synonyms.
+
+<!-- block: ch06-004 -->
+
+[]{#ch06-004}
+
+
+The target matters. If the request demands one sentence, compliance concerns the workshop answer. The judge may itself be required to return JSON containing several fields. Whether that JSON is valid is an operational validation question, separate from whether the workshop answer followed its instruction. I initially treated this distinction as obvious. The local-judge experiment would show why obvious distinctions still need to be encoded and tested.
+
+<!-- block: ch06-005 -->
+
+[]{#ch06-005}
+
+
+My own expected labels were enough to begin debugging, but they could also encode my mistakes. I therefore gathered separate model annotations with candidate predictions and other votes hidden on the first pass. Astra and Gemini supplied proxy references, retained separately. Independent annotation passes reduce one route of contamination; they do not make the annotators independent truth sources or eliminate shared biases. [Evidence E03](evidence.qmd#e03-native-family-comparison)
+
+<!-- block: ch06-006 -->
+
+[]{#ch06-006}
+
+
+Disagreement is useful data. If one judge interprets a phrase as an explicit denial and another treats it as unresolved, I need to inspect the rubric, evidence scope and possible ambiguity. Collapsing the two votes into a majority label would discard that uncertainty. On the wider study's confirmation statuses, fourteen of 72 cards had different Astra and Gemini labels. Candidate agreement can shift materially with the chosen reference; that shift belongs in the report.
+
+<!-- block: ch06-007 -->
+
+[]{#ch06-007}
+
+
+A reference record needs its own identity: judge, rubric version, source inputs, validity checks and any later adjudication. If a revised rubric changes what “coverage” means, I must not pool the new labels with old labels as though the instrument stayed fixed. A human-adjudicated subset would help assess the proxies, but no such gold standard exists in the completed studies described here. Agreement remains agreement with a named reference.
+
+<!-- block: ch06-008 -->
+
+[]{#ch06-008}
+
+
+This also separates three quantities that are easily conflated. A model's reported confidence describes its own scoring behavior. Agreement describes consistency between outputs. Calibration compares predictions with outcomes under a specified reference and distribution. None can silently replace the others. Category-specific trust would require sufficiently reliable adjudicated cases, separate calibration data and an untouched evaluation, not a confident vote attached to a small fixture.
+
+<!-- block: ch06-009 -->
+
+[]{#ch06-009}
+
+
+The practical payoff is a more useful correction. For the incomplete workshop answer, I can preserve supported assertions and request the missing price. For the invented-price answer, I must correct the evidence failure. A binary `bad` label loses this distinction and may teach a future model to confuse omission with fabrication. The richer record therefore improves both present diagnosis and the quality of possible future supervision.
+
+<!-- block: ch06-010 -->
+
+[]{#ch06-010}
+
+
+Reference quality also creates a cost question. If every routine annotation requires an expensive remote judge and subsequent review, local inference may help. [Chapter 7](07-spark.qmd) tests that possibility on the actual GPU, keeping operational success separate from semantic agreement.

@@ -1,0 +1,37 @@
+{
+  "project": {
+    "type": "book",
+    "output-dir": "docs"
+  },
+  "book": {
+    "title": "A Testable Local Semantic Layer",
+    "search": true,
+    "reader-mode": true,
+    "chapters": [
+      "index.qmd",
+      "01-workflow.qmd",
+      "02-instrument.qmd",
+      "03-diagnostics.qmd",
+      "04-landscape.qmd",
+      "05-prompts.qmd",
+      "06-references.qmd",
+      "07-spark.qmd",
+      "08-supervision.qmd",
+      "09-training.qmd",
+      "10-gates.qmd",
+      "evidence.qmd"
+    ]
+  },
+  "execute": {
+    "enabled": false
+  },
+  "format": {
+    "html": {
+      "toc": true,
+      "number-sections": false,
+      "theme": "cosmo",
+      "css": "styles.css",
+      "code-overflow": "wrap"
+    }
+  }
+}

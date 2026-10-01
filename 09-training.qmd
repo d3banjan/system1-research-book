@@ -1,0 +1,73 @@
+---
+title: "9. When training would be justified"
+---
+
+
+<!-- block: ch09-001 -->
+
+[]{#ch09-001}
+
+
+
+<!-- block: ch09-002 -->
+
+[]{#ch09-002}
+
+
+No task fine-tuning has started. That status is compatible with serious training research: I can inspect an upstream recipe, measure optimizer memory and design candidate supervision without having trained a useful task model. Keeping those activities separate prevents a feasibility result from becoming a performance claim.
+
+<!-- block: ch09-003 -->
+
+[]{#ch09-003}
+
+
+My first training question would be whether the existing representations already contain a distinction that a new head can learn. Head-only adaptation freezes the reader and changes the decision boundary. A negative result would be informative only under a competent training setup and adequate supervision; it would not automatically prove the representation contains no useful signal. A positive result would still need grouped confirmation and comparison with the unchanged checkpoint.
+
+<!-- block: ch09-004 -->
+
+[]{#ch09-004}
+
+
+LoRA offers a different hypothesis: modest changes to selected projections may adapt the reader without updating every weight. It is a choice about trainable parameters, not a guarantee of better generalization or lower harmful-error risk. Full-parameter training permits broader changes at a greater optimization and memory cost. The comparison should follow the diagnosed error and resource budget, rather than treating head-only, LoRA and full training as a mandatory progression. [Official LoRA guide](https://huggingface.co/docs/peft/main/en/developer_guides/lora)
+
+<!-- block: ch09-005 -->
+
+[]{#ch09-005}
+
+
+I am particularly interested in attention-projection adaptation. Query/key changes affect routing; including value/output projections also changes what information is transported and combined. “Attention-only” is therefore insufficient specification. I would record the exact layers and projections, freeze everything else deliberately and compare against a head-only baseline. Attention maps are input-dependent activations, not persistent parameters that can simply be edited into a reusable policy.
+
+<!-- block: ch09-006 -->
+
+[]{#ch09-006}
+
+
+The inspected upstream Laya notebook uses full-parameter training with separate encoder and head learning rates, checkpointing and later calibration work. It is an explanatory reference, not a verified reconstruction of every released checkpoint's training history. Nor does its use of two GPUs mean their memory becomes one shared pool under ordinary distributed data parallelism. Local feasibility needs a local measurement. [Upstream notebook](https://github.com/NandhaKishorM/laya/blob/main/notebooks/laya_finetune_typed_decisions_2xT4_kaggle.ipynb)
+
+<!-- block: ch09-007 -->
+
+[]{#ch09-007}
+
+
+A synthetic steady-state optimizer probe did complete on the 12 GB GPU. With 1,024-token rows, accumulation over four micro-batches, checkpointing, FP32 weights/gradients/Adam state and FP16 autocast with loss scaling, the eight-row micro-batch peaked at 8.2186 GiB allocated and 8.9062 GiB reserved. It completed a second optimizer update so persistent optimizer state was included. This made local full-parameter experimentation plausible. [Evidence E08](evidence.qmd#e08-memory-feasibility)
+
+<!-- block: ch09-008 -->
+
+[]{#ch09-008}
+
+
+The probe did not include the complete upstream auxiliary exploration, all data-pipeline variation, evaluation passes or checkpoint writes. Its synthetic shape was not a real task-learning run. A short end-to-end smoke test would still be necessary before a longer experiment, with exact trainable parameters, effective batch size, warmup, gradient clipping, loss scaling, loss logging and versioned checkpoints recorded. Code and configuration must be snapshotted before each run.
+
+<!-- block: ch09-009 -->
+
+[]{#ch09-009}
+
+
+Training also needs a target worth learning. Repeated errors, sufficiently trustworthy supervision, grouped splits and a suitable baseline must precede the optimizer. Calibration data must remain separate from training and final evaluation. Any teacher evidence supplied only during training must be absent from the deployment evaluation unless the deployed system truly includes that teacher. Otherwise the experiment answers the wrong engineering question.
+
+<!-- block: ch09-010 -->
+
+[]{#ch09-010}
+
+
+The objective is not simply higher agreement. It is fewer harmful accepted assertions at useful coverage, with uncertainty and cost visible. If a simpler prompt or deterministic check meets that contract, training may be unnecessary. [Chapter 10](10-gates.qmd) makes the acceptance decision explicit.

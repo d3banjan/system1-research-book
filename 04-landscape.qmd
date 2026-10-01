@@ -1,0 +1,79 @@
+---
+title: "4. Choose an interface before a model"
+---
+
+
+<!-- block: ch04-001 -->
+
+[]{#ch04-001}
+
+
+
+<!-- block: ch04-002 -->
+
+[]{#ch04-002}
+
+
+A failed sensor made me look for alternatives, but “try another model” was too vague a plan. A passage ranker, an entity extractor and a claim verifier can all return numbers through a Python adapter. They are still measuring different things. I needed a map from the application's question to the model's native operation before I needed a leaderboard.
+
+<!-- block: ch04-003 -->
+
+[]{#ch04-003}
+
+
+| Application question | Candidate interface | What remains unproved |
+| --- | --- | --- |
+| Which declared category fits this evidence? | Laya-style bounded option scoring; Kev/Lev pointer or typed readouts | Domain competence and calibration |
+| Which fields and source spans are present? | GLiNER-family extraction | Whether extracted text supports the intended interpretation |
+| Does this passage support this claim? | NLI or factual-consistency scoring | World truth, absent-evidence handling and task transfer |
+| Which passage should I inspect next? | Pointwise or joint-slate reranking | Correctness of an answer built from that passage |
+| Can I normalize or annotate this record? | A local generative worker | Fidelity, valid output, review cost and useful coverage |
+
+<!-- block: ch04-004 -->
+
+[]{#ch04-004}
+
+
+The implementations make these distinctions concrete. [GLiNER2](https://github.com/fastino-ai/GLiNER2) offers schema-oriented extraction and classification; checkpoint capabilities still need checking. [HHEM](https://huggingface.co/vectara/hallucination_evaluation_model) evaluates consistency with supplied evidence. [Qwen's reranker](https://huggingface.co/Qwen/Qwen3-Reranker-0.6B) uses a decoder-based relevance readout, while [Jina v3](https://huggingface.co/jinaai/jina-reranker-v3) ranks documents in a joint context. [ColBERT](https://arxiv.org/abs/2112.01488) uses token-level late interaction for retrieval. These are alternatives for different seams, not interchangeable truth meters.
+
+<!-- block: ch04-005 -->
+
+[]{#ch04-005}
+
+
+The wider local study completed fourteen native lanes and 1,512 card records. Its confirmation portion contained 72 cards in twelve groups; this is separate from the adapter study whose confirmation never ran. The wider study used separate Astra and Gemini proxy references. Their confirmation status labels agreed on 58 of 72 cards, leaving fourteen disagreements. A candidate's apparent quality therefore depended partly on which reference it was compared with. [Evidence E03](evidence.qmd#e03-native-family-comparison)
+
+<!-- block: ch04-006 -->
+
+[]{#ch04-006}
+
+
+The relevance lanes illustrate why I resist a unified ranking. MiniLM, Qwen and Jina ranked the small three-passage slates perfectly by nDCG@3 under both references, while token overlap was already strong. In a separate answer-annotation fixture, a contradicted answer received a Qwen relevance score of 0.99855. The answer was relevant to the question and wrong according to the evidence. No contradiction exists between those observations once I respect the score's task. [Evidence E03](evidence.qmd#e03-native-family-comparison)
+
+<!-- block: ch04-007 -->
+
+[]{#ch04-007}
+
+
+The generative branch asks another question: which local worker is worth testing on a 12 GB GPU? The dated survey supplies a representative panel, not measured winners. [Spark-X2.5-4B](https://huggingface.co/XHToken/Spark-X2.5-4B) is the measured starting point. [Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) offers a nonthinking comparison. [Phi-4-mini](https://huggingface.co/microsoft/Phi-4-mini-instruct) and [Gemma 3 4B](https://huggingface.co/google/gemma-3-4b-it) offer other model families. [LFM2-2.6B](https://huggingface.co/LiquidAI/LFM2-2.6B) and [Qwen3.5-4B](https://huggingface.co/Qwen/Qwen3.5-4B) introduce different mixtures of recurrent or convolutional processing and attention. Their local task quality and memory behavior remain unmeasured here.
+
+<!-- block: ch04-008 -->
+
+[]{#ch04-008}
+
+
+My initial memory model is simple: resident weights plus sequence state, working buffers and desktop headroom must fit. Four billion parameters at nominal four-bit packing require about 1.86 GiB for weights alone; at sixteen bits, about 7.45 GiB. Those are arithmetic lower bounds, not observed artifacts or total VRAM predictions. Quantization metadata, exceptional tensors, cache, concurrency and runtime allocation all matter. Advertised maximum context is especially poor evidence that my intended context fits.
+
+<!-- block: ch04-009 -->
+
+[]{#ch04-009}
+
+
+Active parameters also differ from stored parameters. A mixture-of-experts model may activate only a fraction of its weights for each token while retaining many more weights. [Qwen3-30B-A3B](https://huggingface.co/Qwen/Qwen3-30B-A3B) is therefore not a straightforward 12 GB fully resident candidate merely because its active count is small. Partial CPU offload is a separate latency and RAM trade-off. The historical OpenJev run used such offload; its timing is not an equal-hardware comparison with a small encoder.
+
+<!-- block: ch04-010 -->
+
+[]{#ch04-010}
+
+
+The landscape leaves specific gaps: immutable pre-cutoff identities, exact licenses, label maps, selected quantizations, installed runtime support and measured allocation at the intended workload. I keep these as evidence tasks in the [future-work ledger](evidence.qmd#future-work). More breadth becomes useful only when it tests a missing interface or a concrete cost hypothesis. Meanwhile, [Chapter 5](05-prompts.qmd) asks what can improve without changing the model at all.
