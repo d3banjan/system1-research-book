@@ -1,0 +1,221 @@
+---
+title: "12. When an attention mask changes an answer"
+---
+
+
+<!-- block: ch12-001 -->
+
+[]{#ch12-001}
+
+
+
+<!-- block: ch12-002 -->
+
+[]{#ch12-002}
+
+
+The previous chapters found two different failures: a model can assert a fact that the text never supplies, and a rule can look perfect on familiar wording before failing on a new author's examples. I tried a narrower zero-shot intervention before training another head. A frozen reranker selected two short ranges from each passage. I left each decision model's weights and question unchanged, then altered which source tokens its attention could use. If the answer changed, I could at least locate an inference-time lever. A changed answer alone would not show that the model had found the right evidence. [Evidence E11](evidence.qmd#e11-frozen-attention-routing-diagnostic)
+
+<!-- block: ch12-003 -->
+
+[]{#ch12-003}
+
+
+The test used eighteen authored diagnostic families: people management, visa sponsorship and employment type, each under explicit support, explicit denial, silence, uncertainty or hypothetical wording, conflict, and a wrong-scope or quoted mention. One extended passage per family was used for the mask comparison. The references were independently model-reviewed proposals, not human gold. Twelve of the eighteen references were `unknown`, so a constant-unknown answer already scores 12/18 while recognizing **none** of the six stated facts. The numbers below describe this inspected fixture; they do not estimate performance on job postings.
+
+<!-- block: ch12-diagram-01 -->
+
+[]{#ch12-diagram-01}
+
+
+```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart LR
+    accTitle: A frozen attention intervention, not a new reasoning head
+    accDescr: One question and passage go through the same frozen model twice. The second path changes only attention access to reranker-selected source ranges. Answers are compared against the same provisional reference.
+    Q["Same question and passage"] --> Base["Frozen model: ordinary attention"]
+    Q --> Rank["Frozen reranker: two source ranges"]
+    Rank --> Mask["Attention bias or hard mask"]
+    Mask --> Model["Same frozen model and readout"]
+    Base --> Compare["Paired answer comparison"]
+    Model --> Compare
+    Compare --> Ref["Provisional reference + error type"]
+```
+Diagram: This paired design can show that an attention intervention changed an answer. It does not, by itself, identify which information caused the change.
+
+<!-- block: ch12-004 -->
+
+[]{#ch12-004}
+
+
+Here are the native outcomes for the six truth-answering lanes. In the case labels, **M** means people management, **V** work-visa sponsorship, and **E** permanent employment versus contracting; “silent” means no relevant statement, “hypot” a hypothetical, and “scope” evidence about a different subject. Each two-symbol pair reads **before mask, after mask**: `×✓` means a repaired error, while `✓×` means a regression. Laya uses a 32-token discontiguous **hard** mask; Lev uses a 32-token, 25%-overlap **soft** bias. HRM-Text and Qwen show their no-mask condition; Nano-Jev is a native yes/no groundedness test, so its denial and unknown cells are not three-way decisions. A tick means correct for that lane's question, not calibrated confidence. The displayed mask cells were selected after looking at this diagnostic grid.
+
+<!-- block: ch12-005 -->
+
+[]{#ch12-005}
+
+
+| Case | HRM | Laya base | Laya typed |
+| --- | :---: | :---: | :---: |
+| M support | × | ✓✓ | ✓✓ |
+| M denial | ✓ | ×✓ | ×× |
+| M silent | × | ✓✓ | ✓× |
+| M hypot | × | ×× | ×× |
+| M conflict | × | ×✓ | ×✓ |
+| M scope | × | ×× | ×× |
+| V support | ✓ | ✓✓ | ✓✓ |
+| V denial | ✓ | ✓✓ | ✓✓ |
+| V silent | × | ✓✓ | ×✓ |
+| V unsure | ✓ | ✓✓ | ✓✓ |
+| V conflict | × | ×✓ | ×✓ |
+| V quote | × | ×✓ | ×✓ |
+| E support | ✓ | ✓✓ | ✓✓ |
+| E denial | ✓ | ✓✓ | ✓✓ |
+| E silent | ✓ | ×✓ | ×× |
+| E unsure | ✓ | ✓× | ×✓ |
+| E conflict | × | ×✓ | ×× |
+| E other role | ✓ | ×× | ✓✓ |
+
+<!-- block: ch12-005b -->
+
+[]{#ch12-005b}
+
+
+The remaining native lanes use the **same rows**, but answer different questions in Nano's case. Their separate panel keeps the error pattern legible on a narrow screen.
+
+| Case | Lev | Nano* | Qwen |
+| --- | :---: | :---: | :---: |
+| M support | ×× | ✓ | × |
+| M denial | ×× | ✓ | × |
+| M silent | ✓✓ | × | ✓ |
+| M hypot | ×× | × | ✓ |
+| M conflict | ✓✓ | ✓ | ✓ |
+| M scope | ×× | × | ✓ |
+| V support | ✓✓ | ✓ | × |
+| V denial | ×× | ✓ | × |
+| V silent | ✓✓ | ✓ | ✓ |
+| V unsure | ×✓ | × | ✓ |
+| V conflict | ✓✓ | × | ✓ |
+| V quote | ✓✓ | × | ✓ |
+| E support | ✓✓ | × | × |
+| E denial | ✓✓ | × | × |
+| E silent | ✓✓ | ✓ | ✓ |
+| E unsure | ×✓ | ✓ | ✓ |
+| E conflict | ✓✓ | ✓ | ✓ |
+| E other role | ×× | ✓ | ✓ |
+
+<!-- block: ch12-006 -->
+
+[]{#ch12-006}
+
+
+The small table is easier to read by variation type. Each cell counts the three claim families, not four fictional job titles or their distractor copies as independent trials. “Hypothetical/uncertain” and “wrong scope/quote” combine related but nonidentical constructions, so the aggregate is a map of this fixture rather than one linguistic skill score.
+
+<!-- block: ch12-007 -->
+
+[]{#ch12-007}
+
+
+| Variation | HRM | Laya B | Laya T |
+| --- | :---: | :---: | :---: |
+| Support | 2/3 | 3⁠→⁠3 | 3⁠→⁠3 |
+| Denial | 3/3 | 2⁠→⁠3 | 2⁠→⁠2 |
+| Silence | 1/3 | 2⁠→⁠3 | 1⁠→⁠1 |
+| Hypot / unsure | 2/3 | 2⁠→⁠1 | 1⁠→⁠2 |
+| Conflict | 0/3 | 0⁠→⁠3 | 0⁠→⁠2 |
+| Scope / quote | 1/3 | 0⁠→⁠1 | 1⁠→⁠2 |
+| **Total /18** | **9** | **9⁠→⁠14** | **8⁠→⁠12** |
+
+<!-- block: ch12-007b -->
+
+[]{#ch12-007b}
+
+
+| Variation | Lev | Nano* | Qwen |
+| --- | :---: | :---: | :---: |
+| Support | 2⁠→⁠2 | 2/3 | 0/3 |
+| Denial | 1⁠→⁠1 | 2/3 | 0/3 |
+| Silence | 3⁠→⁠3 | 2/3 | 3/3 |
+| Hypot / unsure | 0⁠→⁠2 | 1/3 | 3/3 |
+| Conflict | 3⁠→⁠3 | 2/3 | 3/3 |
+| Scope / quote | 1⁠→⁠1 | 1/3 | 3/3 |
+| **Total /18** | **10⁠→⁠12** | **10*** | **12** |
+
+<!-- block: ch12-diagram-02 -->
+
+[]{#ch12-diagram-02}
+
+
+```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
+    accTitle: Three flips expose both benefit and risk
+    accDescr: A management denial changes from unsupported support to correct denial under Laya's hard mask. A sponsorship conflict changes from support to correct unresolved. An employment-uncertainty case changes from correct unresolved to unsupported support.
+    Denial["Management: will not manage staff"] --> D0["Laya: supported - wrong"]
+    D0 --> D1["Hard mask: denied - right"]
+    Conflict["Sponsorship: HR confirms, lead denies"] --> C0["Laya: supported - wrong"]
+    C0 --> C1["Hard mask: unresolved - right"]
+    Uncertain["Employment: recruiter does not know"] --> U0["Laya: unresolved - right"]
+    U0 --> U1["Hard mask: supported - wrong"]
+```
+Diagram: A single routing tactic can repair a negation and a conflict while creating an unsupported assertion elsewhere.
+
+<!-- block: ch12-008 -->
+
+[]{#ch12-008}
+
+
+The first flip is unusually concrete. In the fictional Data Analyst example, the source says the hire “will not manage employees as direct reports.” Laya base called the positive management claim `supported` before masking and `denied` after it. Lev called it `supported` before its soft bias and merely `unresolved` afterward: a safer answer, but still not the explicit denial the passage supplies. In a second example, HR confirmed sponsorship while the hiring lead denied it for the *same opening*. Laya changed `supported` to the reference `unresolved` under the hard mask. These are answer changes on extended passages that also contain irrelevant career-glossary and company text; the quoted sentences are excerpts, not the whole input.
+
+<!-- block: ch12-009 -->
+
+[]{#ch12-009}
+
+
+The regression matters just as much. A recruiter explicitly did **not know** whether the Data Analyst role was permanent or contracting. Laya base correctly returned `unresolved` without a mask, then asserted `supported` with it. The management hypothetical and a company-wide management policy also remained wrongly substantive under Laya's mask. HRM-Text returned wrong labels on both. For Lev, the soft bias corrected two uncertain cases by changing `supported` to `unresolved`, but added no support or denial recognition. Qwen's apparently respectable 12/18 came from answering `unknown` to **every** case; it missed all six explicit support/denial cases.
+
+<!-- block: ch12-010 -->
+
+[]{#ch12-010}
+
+
+The broader HRM-Text run helps test a tempting explanation. Across 144 dependent rows, it recovered 20/24 supports and 24/24 denials, but only 21/96 unknowns. It failed all 24 conflict variants and 23/24 wrong-scope variants. In 72 clean-versus-keyword-distractor pairs, 14 predictions changed, yet correctness was 32 without the distractor and 33 with it. Keyword distraction affected answers, but did not produce a consistent net loss. “It is only matching keywords” is not established by these data. Relation, subject and source binding remain plausible problems.
+
+<!-- block: ch12-diagram-03 -->
+
+[]{#ch12-diagram-03}
+
+
+```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
+    accTitle: What the routing result does and does not identify
+    accDescr: Exact identity controls and paired flips establish an effect of changing attention access. Learned retrieval, generic compression, source position and abstention bias remain competing explanations requiring matched controls.
+    Identity["Identity mask: same logits"] --> Effect["Selected mask: answers change"]
+    Effect --> Shorter["Less context?"]
+    Effect --> Position["Source position?"]
+    Effect --> Prior["More abstention?"]
+    Effect --> Retrieval["Better evidence selection?"]
+    Shorter --> Controls["Matched random, prefix, lexical and oracle masks"]
+    Position --> Controls
+    Prior --> Controls
+    Retrieval --> Controls
+```
+Diagram: The intervention establishes a causal effect on this model's output, not a unique causal explanation for its improved score.
+
+<!-- block: ch12-011 -->
+
+[]{#ch12-011}
+
+
+The identity-mask checks protect the comparison against a broken adapter: Laya's base and typed heads reproduced their no-mask raw logits on all 36 checkpoint-family pairs; Lev did so on all eighteen. The frozen relevance reranker retained the complete original evidence string in only 13/18 cases at the narrowest no-overlap setting, and a lexical selector tied its source-retention counts in every chunk cell. Moreover, source-string retention does not prove the decisive clause survived. Some Laya corrections occurred even when the selected ranges omitted part of that original string. The selected text may be changing the model's general willingness to abstain rather than showing it the right clause.
+
+<!-- block: ch12-012 -->
+
+[]{#ch12-012}
+
+
+My next causal test is therefore not “try another model.” Hold the question, readout, selected-token budget and fresh grouped examples fixed. Compare the learned reranker with lexical, prefix-only, random and an explicitly annotated clause oracle; move the decisive clause to the beginning, middle and end. Add clause deletion, negation and wrong-subject edits. If oracle selection works but the learned selector fails, retrieval is the bottleneck. If every short mask helps, compression or answer bias is more likely. If no mask works, the decision interface is the likelier seam. If learned selection uniquely wins on independently authored groups, only then can I credit relevance routing. This test has **not** run. None of these diagnostic outputs enters the active workflow.

@@ -30,6 +30,13 @@ Update, 2026-10-02: [bounded native diagnostics](03-diagnostics.qmd#repeatabilit
 
 Later update, 2026-10-02: [the frozen-head and heuristic-prior chapter](11-priors.qmd) records sixteen small-head TRAIN/VAL fits and a separate one-shot synthetic holdout. A development-perfect rule failed useful recall under independently authored wording; no sensor entered the active workflow. [E10](evidence.qmd#e10-frozen-head-and-prior-holdout) retains the denominators, erratum and proxy-reference limit.
 
+<!-- block: intro-016 -->
+
+[]{#intro-016}
+
+
+A further [attention-routing diagnostic](12-attention.qmd) compares frozen decision models on the same eighteen authored claim families. Its examples show repairs and regressions, not a confirmed routing mechanism: Laya's narrow hard mask improved this inspected grid, while HRM-Text did not. [E11](evidence.qmd#e11-frozen-attention-routing-diagnostic) records the counts and limits.
+
 <!-- block: intro-003 -->
 
 []{#intro-003}
@@ -172,4 +179,5 @@ Diagram: The appendix exposes enough evidence context to qualify claims without 
 9. [When training would be justified](09-training.qmd)
 10. [Earn a place in the harness](10-gates.qmd)
 11. [When a perfect development rule did not travel](11-priors.qmd)
-12. [Evidence and future-work ledger](evidence.qmd)
+12. [When an attention mask changes an answer](12-attention.qmd)
+13. [Evidence and future-work ledger](evidence.qmd)

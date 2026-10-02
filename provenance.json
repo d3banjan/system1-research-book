@@ -40,6 +40,7 @@
       "intro-002",
       "intro-014",
       "intro-015",
+      "intro-016",
       "intro-003",
       "intro-004",
       "intro-005",
@@ -55,7 +56,7 @@
       "intro-diagram-03",
       "intro-013"
     ],
-    "sha256": "0eee28a1280a6ccf3946817168d7ca42d9d9d712e86eac06be0c430dcb76ce27",
+    "sha256": "c198cc8a84234389de22890991a596e188432df3bced695053a61c4e20d66f50",
     "source": "index.md"
   },
   {
@@ -272,6 +273,29 @@
   },
   {
     "blocks": [
+      "ch12-001",
+      "ch12-002",
+      "ch12-003",
+      "ch12-diagram-01",
+      "ch12-004",
+      "ch12-005",
+      "ch12-005b",
+      "ch12-006",
+      "ch12-007",
+      "ch12-007b",
+      "ch12-diagram-02",
+      "ch12-008",
+      "ch12-009",
+      "ch12-010",
+      "ch12-diagram-03",
+      "ch12-011",
+      "ch12-012"
+    ],
+    "sha256": "b437363a683e85bd10df2d6ee17758774dd429b57303d2eff9a4d97759ecf093",
+    "source": "12-attention.md"
+  },
+  {
+    "blocks": [
       "evidence-001",
       "evidence-002",
       "evidence-003",
@@ -303,13 +327,17 @@
       "evidence-031",
       "evidence-032",
       "evidence-033",
+      "evidence-034",
+      "evidence-035",
+      "evidence-036",
+      "evidence-037",
       "evidence-024",
       "evidence-025",
       "app-diagram-03",
       "evidence-026",
       "evidence-027"
     ],
-    "sha256": "a2828658d33f5d67a53ef2862b0465ed71bf0110e8fefa0bf716933381fb6f83",
+    "sha256": "ee8991e59ec52fe3254ad59ef9c094a26280a6d234ed3b62119336963f0cadd4",
     "source": "evidence.md"
   }
 ]

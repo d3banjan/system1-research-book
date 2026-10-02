@@ -14,7 +14,7 @@ title: "Evidence and future-work ledger"
 []{#evidence-002}
 
 
-This first-draft ledger summarizes retained project records as of 2026-10-01. E-identifiers name local studies, not external publications. Raw private inputs and reasoning traces are not public artifacts. Counts below are source-recorded observations; this manuscript did not rerun the experiments. Public primary sources are linked in the relevant chapters. Mutable model cards describe source observations and require immutable revision checks before a new execution.
+This ledger began with the 2026-10-01 draft and now includes dated 2026-10-02 updates. E-identifiers name local studies, not external publications. Raw private inputs and reasoning traces are not public artifacts. Counts below are source-recorded observations; this manuscript did not rerun the experiments. Public primary sources are linked in the relevant chapters. Mutable model cards describe source observations and require immutable revision checks before a new execution.
 
 <!-- block: evidence-003 -->
 
@@ -272,6 +272,41 @@ The V2 Python prior was frozen after one development correction. On familiar VAL
 
 All fail useful recall. Independent audit confirmed exact joins, split non-overlap and primary counts. A locked-scorer condition alias made its *aggregate* conflict denominator zero; the already saved condition slice has 24 conflicts and zero assertions for all comparators. No rerun or tuning followed. All references remain independently model-reviewed proposals, not human gold; three families per condition and repeated variants prohibit row-IID or real-world safety estimates. The held-out wording was longer and structurally different, but causal attribution of the collapse is unresolved. No component was promoted.
 
+<!-- block: evidence-034 -->
+
+[]{#evidence-034}
+
+
+## E11: Frozen attention-routing diagnostic
+
+<!-- block: evidence-035 -->
+
+[]{#evidence-035}
+
+
+Private canonical source record: “Zero-shot reranker attention and HRM-Text pilot,” 2026-10-02. The mask comparison used one extended authored passage from each of eighteen previously inspected claim families (three attributes × six evidence variations), with provisional independently model-reviewed references. Twelve references were unknown. Runs used frozen pretrained checkpoints, pinned isolated environments and paired same-input identity controls; no task fine-tuning or active-pipeline decision followed. The HRM-Text separate full grid had 144 dependent rows: 65/144 exact, including 20/24 support, 24/24 denial and 21/96 unknown, with zero invalid outputs.
+
+<!-- block: evidence-036 -->
+
+[]{#evidence-036}
+
+
+| Native lane / selected exploratory mask | Correct /18 before→after | Key qualification |
+| --- | :---: | --- |
+| Laya base, narrow discontiguous hard mask | 9→14 | Six corrections, one regression; unknown unsupported assertions 8/12→4/12; descriptive paired sign p=0.125 before accounting for explored cells |
+| Laya typed, same hard mask | 8→12 | Different corrections and a regression; no independent confirmation |
+| Lev native pointer head, narrow 25%-overlap soft bias | 10→12 | Two unknown corrections; no new support or denial recognition; hard masks tied or worsened |
+| HRM-Text bounded A/B/C, all tested masks | 9→at most 9 | No arm improved; its 144-row run is a separate, dependent diagnostic |
+| Qwen3.5-0.8B bounded A/B/C, no mask | 12 | Answered unknown in every case, recovering zero support or denial |
+| Nano-Jev grounded yes/no, no mask | 10* | Binary correctness only; denial and unknown cannot be distinguished |
+
+<!-- block: evidence-037 -->
+
+[]{#evidence-037}
+
+
+*Nano's ten correct answers are on its native binary groundedness question, not the three-way relation. MiniLM and Qwen-Reranker relevance heads returned scores, not claim truth; their score changes do not establish ranking or factual-support gains. DeBERTa-v3 NLI rejected the generic 4D-mask route, so it has no valid mask result. Other catalogue identities remain model-specific feasibility work, not implicit negative results. At width 32/0%, the frozen reranker retained the entire supplied evidence string for 13/18 extended documents, tied by lexical ranking in every chunk cell; clause-level support was not checked. Laya and Lev identity masks reproduced raw logits exactly on all 36 and eighteen checkpoint-family checks respectively. Multiple mask cells were inspected, the passages place original evidence before appended context, and no fresh grouped confirmation was run. Accuracy changes cannot establish learned retrieval, generic compression, source-position or abstention-prior causality.
+
 <!-- block: evidence-024 -->
 
 []{#evidence-024}
@@ -319,6 +354,7 @@ Diagram: Future-work IDs name proposed evidence tasks; the ledger does not treat
 | GATE-01 | Consequence-specific error budget and minimum useful coverage | Consuming policy and sufficient independent adjudication; no invented threshold |
 | EVAL-02 | Explicit entity, source and quotation attribution controls, then independent grouped replication | Proposed development protocol informed by E09; freeze controls and selection before independent replication; not run |
 | LATENT-01 | Replicate bounded recurrence against nonrecurrent controls on diverse language | E10 tried one-seed shared T2/T4 and untied T4 without an eligible sensor; multi-seed/new-source mechanism claim deferred |
+| ROUTE-01 | Separate learned evidence routing from compression, source position and abstention shift | E11 is an inspected development diagnostic; compare equal-budget learned, lexical, prefix, random and oracle-clause masks on new grouped examples before any routing claim |
 
 <!-- block: evidence-027 -->
 
