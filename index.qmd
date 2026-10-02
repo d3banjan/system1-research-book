@@ -16,6 +16,13 @@ title: "Introduction"
 
 First draft · research as of 2026-10-01
 
+<!-- block: intro-014 -->
+
+[]{#intro-014}
+
+
+Update, 2026-10-02: [bounded native diagnostics](03-diagnostics.qmd#repeatability-without-reliability) now test evidence attribution and immediate repeatability. None of the tested interfaces passed its development gate; [E09](evidence.qmd#e09-bounded-native-robustness) records the counts and limits.
+
 <!-- block: intro-003 -->
 
 []{#intro-003}

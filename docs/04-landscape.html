@@ -189,8 +189,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#three-native-routes-on-the-same-local-machine" id="toc-three-native-routes-on-the-same-local-machine" class="nav-link active" data-scroll-target="#three-native-routes-on-the-same-local-machine">2026-10-02: Three native routes on the same local machine</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -330,8 +336,15 @@ flowchart TD
 <!-- block: ch04-010 -->
 <p><span id="ch04-010"></span></p>
 <p>The landscape leaves specific gaps: immutable pre-cutoff identities, exact licenses, label maps, selected quantizations, installed runtime support and measured allocation at the intended workload. I keep these as evidence tasks in the <a href="./evidence.html#future-work">future-work ledger</a>. More breadth becomes useful only when it tests a missing interface or a concrete cost hypothesis. Meanwhile, <a href="./05-prompts.html">Chapter 5</a> asks what can improve without changing the model at all.</p>
+<!-- block: ch04-011 -->
+<p><span id="ch04-011"></span></p>
+<section id="three-native-routes-on-the-same-local-machine" class="level2">
+<h2 class="anchored" data-anchor-id="three-native-routes-on-the-same-local-machine">2026-10-02: Three native routes on the same local machine</h2>
+<p>The next bounded study used cached Laya base English option scoring, DeBERTa NLI and Kev’s pointer route, all offline in FP32 on an RTX 3060. Kev used its frozen Qwen base with a native one-forward pointer readout; no generated chain of thought was involved. Fourteen runs completed 573 requests without invalid outputs or runtime failures. No weights were downloaded or trained, and no paid calls were made. <a href="./evidence.html#e09-bounded-native-robustness">Evidence E09</a></p>
+<p>Runtime details constrain the comparison. Laya emitted a checkpoint temperature-clamping warning, retained in the evidence; its scores remain uncalibrated. Kev used slower reference kernels. Measured GPU fit establishes that these bounded workloads ran, not deployment calibration or a portable speed ranking. The next useful comparison is explicit entity/source conditioning and independent replication before introducing latent recurrence or training; a TRM head remains proposed, not implemented.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

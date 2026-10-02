@@ -220,6 +220,38 @@ Eight of twelve nonthinking compliance rationales showed target confusion: five 
 
 Source record: Laya architecture article, corrected steady-state VRAM probe. Eight-row micro-batch: 8.2186 GiB peak allocated, 8.9062 GiB reserved, 10.526 GiB free at process start. Synthetic 1,024-token rows, 256-token head, accumulation four, FP32 weights/gradients/Adam state, FP16 autocast and GradScaler, encoder/head checkpointing, second update completed. Auxiliary training operations and full end-to-end variation were absent. This supports limited memory feasibility, not task-training performance.
 
+<!-- block: evidence-030 -->
+
+[]{#evidence-030}
+
+
+## E09: Bounded native robustness
+
+Source record: “System-1 five-hour session,” 2026-10-02. Twenty-four newly authored development groups across people management, sponsorship and employment arrangement: six support, six denial, twelve unresolved, including three conflicts. Fourteen completed runs produced 573 native requests; all outputs valid, zero runtime failures. Smoke calls are included operational checks, not independent data. The 108 robustness requests per canonical lane reuse these groups. Provisional model-origin references were independently reviewed, not human-adjudicated gold.
+
+<!-- block: evidence-031 -->
+
+[]{#evidence-031}
+
+
+Cached identities: Laya base English `55cf4c4ebb4ebe31b2550e8bdf3bd21b99753851`; DeBERTa NLI `6f5cf0a2b59cabb106aca4c287eed12e357e90eb`; Kev `9a45d25eb2ab761841196625383fa1dff0e56c1e`, frozen Qwen base `dc7cdfe2ee4154fa7e30f5b51ca41bfa40174e68`. Offline RTX 3060 FP32 inference; no text generation, training, downloads or paid calls. Laya's temperature-clamping warning was preserved; scores are uncalibrated. Kev reference kernels and native one-forward pointer execution limit performance interpretation.
+
+| Canonical route | Facts correct /12 | Unsupported /12 unresolved | Assertions /3 conflicts |
+| --- | ---: | ---: | ---: |
+| Laya | 11 | 9 | 3 |
+| DeBERTa NLI | 12 | 7 | 3 |
+| Kev | 12 | 6 | 1 |
+| Frozen literal baseline | 9 | 0 | 0 |
+
+<!-- block: evidence-032 -->
+
+[]{#evidence-032}
+
+
+Conflict assertions are a subset of unresolved assertions. The literal baseline matches 21/24 references with a narrow conservative quote/apostrophe guard. Standard NLI agreement excludes the three conflicts, giving a 21-case denominator; the overall 24-case safety stress includes them. This reporting distinction never overrides a prediction using the reference label. Kev bounded QA recovered 5/6 support and 6/6 denial, with 3/12 unresolved assertions and zero conflict assertions; no interface passed the frozen gate, and the conditional 324-request extension did not run.
+
+Repeated labels disagreed on 0/24 for each canonical lane, retaining 10/7/6 endpoint errors for Laya/NLI/Kev. NLI counterfactual destinations were correct on 24/24, but both source and destination were correct on 17/24. Support removal errors were 4/6, 0/6, 1/6; subject-change errors 5/6, 6/6, 5/6 respectively. NLI distractor errors were 16/24; Kev's were 3/24. These dependent development diagnostics do not establish production reliability, minimal-negation causality, a capacity limit or a statistically superior model.
+
 <!-- block: evidence-024 -->
 
 []{#evidence-024}
@@ -265,6 +297,8 @@ Diagram: Future-work IDs name proposed evidence tasks; the ledger does not treat
 | DATA-01 | Usable, disputed, missing and invalid labels by dimension | Retained-record eligibility audit and privacy review; candidate data only |
 | TRAIN-01 | Learnability and end-to-end adaptation feasibility | Validated supervision, grouped splits, baselines and a reviewed training protocol; deferred |
 | GATE-01 | Consequence-specific error budget and minimum useful coverage | Consuming policy and sufficient independent adjudication; no invented threshold |
+| EVAL-02 | Explicit entity, source and quotation attribution controls, then independent grouped replication | Proposed development protocol informed by E09; freeze controls and selection before independent replication; not run |
+| LATENT-01 | Frozen-encoder linear/MLP and capacity-matched nonrecurrent heads versus a TRM head | Conditional on reviewed training data and a reviewed protocol; proposed comparison only, no training started |
 
 <!-- block: evidence-027 -->
 

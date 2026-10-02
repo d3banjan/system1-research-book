@@ -189,8 +189,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#repeatability-without-reliability" id="toc-repeatability-without-reliability" class="nav-link active" data-scroll-target="#repeatability-without-reliability">2026-10-02: Repeatability without reliability</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -288,8 +294,53 @@ flowchart TD
 <!-- block: ch03-010 -->
 <p><span id="ch03-010"></span></p>
 <p>The experiment had reached a useful stopping point even without a winner. It showed why ordinary accuracy was the wrong selection rule and which failures needed a better instrument. <a href="./04-landscape.html">Chapter 4</a> broadens the search by native task, while the prompt branch continues in parallel.</p>
+<!-- block: ch03-011 -->
+<p><span id="ch03-011"></span></p>
+<section id="repeatability-without-reliability" class="level2">
+<h2 class="anchored" data-anchor-id="repeatability-without-reliability">2026-10-02: Repeatability without reliability</h2>
+<p>I next held the question small: three attributes, 24 authored development scenarios, six supported facts, six denials and twelve unresolved cases. Three unresolved cases contain conflicting evidence. Laya recovered 11/12 explicit facts; DeBERTa NLI and Kev recovered 12/12. Their unsupported assertions were nevertheless 9/12, 7/12 and 6/12. A frozen literal baseline recovered 9/12 facts with no unsupported assertions and 21/24 overall agreement. Its conservative quote/apostrophe guard limits what that comparison establishes. <a href="./evidence.html#e09-bounded-native-robustness">Evidence E09</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/canonical-outcomes.png" class="img-fluid figure-img"></p>
+<figcaption>Canonical results separate explicit fact recovery from unsupported assertions.</figcaption>
+</figure>
+</div>
+<p>Each canonical lane then received 108 transformed requests from those same 24 groups. Exact repetition changed zero labels out of 24 for every lane, while preserving ten Laya errors, seven NLI errors and six Kev errors. Repeatability here means the same immediate answer, including the same mistake; it establishes neither correctness nor long-term stability.</p>
+<!-- block: ch03-diagram-03 -->
+<p><span id="ch03-diagram-03"></span></p>
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
+    accTitle: Repeating an answer does not validate its evidence
+    accDescr: A repeated request can return the same label, which may be correct or preserve an original error. Separate evidence changes probe whether the answer follows the right source and subject.
+    Request["Repeat request"] --&gt; Same["Same label"]
+    Same --&gt; Correct["Correct answer retained"]
+    Same --&gt; Error["Original error retained"]
+    Edit["Change evidence or subject"] --&gt; Scope["Test evidence attribution"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: A stability check and an attribution check answer different questions.</p>
+<!-- block: ch03-012 -->
+<p><span id="ch03-012"></span></p>
+<p>DeBERTa reached the correct destination on all 24 complete counterfactual evidence edits, but only 17/24 pairs had both a correct source and destination. It also returned unresolved after all six support removals. Those are useful observations, not a minimal-negation causal test: complete evidence replacements change more than a single logical operator.</p>
+<p>Attribution remained fragile. Subject changes produced errors on 6/6 NLI cases and 5/6 for each other lane. Distractors produced 16/24 NLI errors versus 3/24 for Kev. Removing support produced 4/6 Laya errors and 1/6 Kev errors. The architectures already perform useful language operations, but this fixture exposes failures in whose evidence counts and which evidence is irrelevant. It does not prove a bag-of-words mechanism or a capacity limit.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/robustness-endpoints.png" class="img-fluid figure-img"></p>
+<figcaption>Robustness endpoint errors, with transformation-specific denominators and dependent scenario groups.</figcaption>
+</figure>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

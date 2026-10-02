@@ -21,9 +21,24 @@
     "type": "asset"
   },
   {
+    "public_sha256": "09a11672dbd0f550e3d3bfb324090a37c2b42b2097efc39c64954ff9b5b49960",
+    "sha256": "2b930ff845394cecced7d35761712b32d1788d96e0ae23e2f77a477ce8daa0f3",
+    "source": "assets/canonical-outcomes.png",
+    "transform": "strip-png-ancillary-except-transparency",
+    "type": "asset"
+  },
+  {
+    "public_sha256": "3f064ec6f321b81fb268cc2bb2e9db44964d5bdcc22a2d6111d833234073a825",
+    "sha256": "83b3f8ff918b0f34b410604659b1e47a54776c993fd3acd7fb905681cae86da1",
+    "source": "assets/robustness-endpoints.png",
+    "transform": "strip-png-ancillary-except-transparency",
+    "type": "asset"
+  },
+  {
     "blocks": [
       "intro-001",
       "intro-002",
+      "intro-014",
       "intro-003",
       "intro-004",
       "intro-005",
@@ -39,7 +54,7 @@
       "intro-diagram-03",
       "intro-013"
     ],
-    "sha256": "6b7e79c01b0019498d4e8ff9244cee1bb831af3d5ddeeeb9acff1a5749f237b6",
+    "sha256": "36b09b951ed2d4864a04dc890d944825c8e591768fb50559fd1c725f6e6fa52b",
     "source": "index.md"
   },
   {
@@ -92,9 +107,12 @@
       "ch03-008",
       "ch03-009",
       "ch03-diagram-02",
-      "ch03-010"
+      "ch03-010",
+      "ch03-011",
+      "ch03-diagram-03",
+      "ch03-012"
     ],
-    "sha256": "e313a0c3742df546eb6e869f1b12ef5da4fb0b0935c6dd70fa9de07c6d67a55f",
+    "sha256": "d3c8f0d8d7dc583b2c49f3b1c5bf314bbbdba806665a8061b34c40b25d59968f",
     "source": "03-diagnostics.md"
   },
   {
@@ -110,9 +128,10 @@
       "ch04-008",
       "ch04-009",
       "ch04-diagram-02",
-      "ch04-010"
+      "ch04-010",
+      "ch04-011"
     ],
-    "sha256": "8c63f37885a5368eb919eb7af71978c2793ccbb41218546ea56dbb55b4b91e9f",
+    "sha256": "ba5d8a77a6becd410a2701ea6e5195115af8197e92cfb80538195ad61b039f4d",
     "source": "04-landscape.md"
   },
   {
@@ -225,9 +244,12 @@
       "ch10-008",
       "ch10-009",
       "ch10-diagram-02",
-      "ch10-010"
+      "ch10-010",
+      "ch10-011",
+      "ch10-diagram-03",
+      "ch10-012"
     ],
-    "sha256": "184e6a4b9a9ce22638177bd9611166c165f5bae0daeee36da535f841fd58d5f6",
+    "sha256": "f29b61ec5a62ace4403d5e0180881b2023c2d0b9656fc5a3257f9126923b20d7",
     "source": "10-gates.md"
   },
   {
@@ -259,13 +281,16 @@
       "evidence-021",
       "evidence-022",
       "evidence-023",
+      "evidence-030",
+      "evidence-031",
+      "evidence-032",
       "evidence-024",
       "evidence-025",
       "app-diagram-03",
       "evidence-026",
       "evidence-027"
     ],
-    "sha256": "eaeb21096d9ee9753038650971f8bd693430451222cd35785501cf533fa2cc5e",
+    "sha256": "98ae883aad66af78155c40958f49b14f5dcb680f9c470e1774bd162c0b8d625f",
     "source": "evidence.md"
   }
 ]

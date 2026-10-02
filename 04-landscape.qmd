@@ -116,3 +116,14 @@ Diagram: Parameter arithmetic offers a lower bound, while runtime allocation and
 
 
 The landscape leaves specific gaps: immutable pre-cutoff identities, exact licenses, label maps, selected quantizations, installed runtime support and measured allocation at the intended workload. I keep these as evidence tasks in the [future-work ledger](evidence.qmd#future-work). More breadth becomes useful only when it tests a missing interface or a concrete cost hypothesis. Meanwhile, [Chapter 5](05-prompts.qmd) asks what can improve without changing the model at all.
+
+<!-- block: ch04-011 -->
+
+[]{#ch04-011}
+
+
+## 2026-10-02: Three native routes on the same local machine
+
+The next bounded study used cached Laya base English option scoring, DeBERTa NLI and Kev's pointer route, all offline in FP32 on an RTX 3060. Kev used its frozen Qwen base with a native one-forward pointer readout; no generated chain of thought was involved. Fourteen runs completed 573 requests without invalid outputs or runtime failures. No weights were downloaded or trained, and no paid calls were made. [Evidence E09](evidence.qmd#e09-bounded-native-robustness)
+
+Runtime details constrain the comparison. Laya emitted a checkpoint temperature-clamping warning, retained in the evidence; its scores remain uncalibrated. Kev used slower reference kernels. Measured GPU fit establishes that these bounded workloads ran, not deployment calibration or a portable speed ranking. The next useful comparison is explicit entity/source conditioning and independent replication before introducing latent recurrence or training; a TRM head remains proposed, not implemented.

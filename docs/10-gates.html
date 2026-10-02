@@ -189,8 +189,14 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#a-development-gate-that-stayed-closed" id="toc-a-development-gate-that-stayed-closed" class="nav-link active" data-scroll-target="#a-development-gate-that-stayed-closed">2026-10-02: A development gate that stayed closed</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -287,8 +293,39 @@ accDescr: The model returns an observation to Python, which checks evidence scop
 <!-- block: ch10-010 -->
 <p><span id="ch10-010"></span></p>
 <p>I began by trying to transfer a workflow into one typed choice. I now have a more demanding and more testable goal: make one semantic operation cheap enough, useful enough and bounded enough for a particular place in the application. The simplest component that meets that contract is enough. When it fails, the next refinement should answer the failure I measured.</p>
+<!-- block: ch10-011 -->
+<p><span id="ch10-011"></span></p>
+<section id="a-development-gate-that-stayed-closed" class="level2">
+<h2 class="anchored" data-anchor-id="a-development-gate-that-stayed-closed">2026-10-02: A development gate that stayed closed</h2>
+<p>The bounded study supplied a concrete experimental gate without settling production policy. Kev’s question interface recovered 5/6 supported facts and 6/6 denials, and asserted on none of the three conflicts. It still asserted on 3/12 unresolved cases, exceeding the frozen allowance of at most 1/12. No tested interface qualified; the conditional 324-request extension remained unexecuted. None has yet earned a larger independent evaluation. <a href="./evidence.html#e09-bounded-native-robustness">Evidence E09</a></p>
+<!-- block: ch10-diagram-03 -->
+<p><span id="ch10-diagram-03"></span></p>
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
+    accTitle: The development gate prevents an unearned extension
+    accDescr: Tested native interfaces fail the frozen development eligibility gate, so the conditional extension does not run. Diagnosed attribution failures instead inform a proposed new development protocol.
+    Interfaces["Native interfaces tested"] --&gt; Gate["Frozen development gate"]
+    Gate --&gt; Failed["No eligible interface"]
+    Failed --&gt; Stopped["Conditional extension not run"]
+    Failed --&gt; Proposed["Propose attribution controls"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: A failed gate changes the next research question; it does not silently relax the admission rule.</p>
+<!-- block: ch10-012 -->
+<p><span id="ch10-012"></span></p>
+<p>All new cases are development material built around known failure types and templates. Independently reviewed model-origin labels remain provisional. Grouped descriptive uncertainty cannot turn them into an IID sample, a statistically winning model or proof of pretraining freshness. Job search is the first testbed for a general semantic harness; Python’s policy, provenance and final authority remain unchanged, and no annotation factory has been implemented.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

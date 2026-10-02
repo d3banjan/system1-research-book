@@ -108,3 +108,37 @@ Diagram: The model provides evidence for a decision; the application owns the de
 
 
 I began by trying to transfer a workflow into one typed choice. I now have a more demanding and more testable goal: make one semantic operation cheap enough, useful enough and bounded enough for a particular place in the application. The simplest component that meets that contract is enough. When it fails, the next refinement should answer the failure I measured.
+
+<!-- block: ch10-011 -->
+
+[]{#ch10-011}
+
+
+## 2026-10-02: A development gate that stayed closed
+
+The bounded study supplied a concrete experimental gate without settling production policy. Kev's question interface recovered 5/6 supported facts and 6/6 denials, and asserted on none of the three conflicts. It still asserted on 3/12 unresolved cases, exceeding the frozen allowance of at most 1/12. No tested interface qualified; the conditional 324-request extension remained unexecuted. None has yet earned a larger independent evaluation. [Evidence E09](evidence.qmd#e09-bounded-native-robustness)
+
+<!-- block: ch10-diagram-03 -->
+
+[]{#ch10-diagram-03}
+
+
+```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
+    accTitle: The development gate prevents an unearned extension
+    accDescr: Tested native interfaces fail the frozen development eligibility gate, so the conditional extension does not run. Diagnosed attribution failures instead inform a proposed new development protocol.
+    Interfaces["Native interfaces tested"] --> Gate["Frozen development gate"]
+    Gate --> Failed["No eligible interface"]
+    Failed --> Stopped["Conditional extension not run"]
+    Failed --> Proposed["Propose attribution controls"]
+```
+Diagram: A failed gate changes the next research question; it does not silently relax the admission rule.
+
+<!-- block: ch10-012 -->
+
+[]{#ch10-012}
+
+
+All new cases are development material built around known failure types and templates. Independently reviewed model-origin labels remain provisional. Grouped descriptive uncertainty cannot turn them into an IID sample, a statistically winning model or proof of pretraining freshness. Job search is the first testbed for a general semantic harness; Python's policy, provenance and final authority remain unchanged, and no annotation factory has been implemented.

@@ -108,3 +108,45 @@ Diagram: Separating malformed, abstaining and unresolved outcomes prevents schem
 
 
 The experiment had reached a useful stopping point even without a winner. It showed why ordinary accuracy was the wrong selection rule and which failures needed a better instrument. [Chapter 4](04-landscape.qmd) broadens the search by native task, while the prompt branch continues in parallel.
+
+<!-- block: ch03-011 -->
+
+[]{#ch03-011}
+
+
+## 2026-10-02: Repeatability without reliability
+
+I next held the question small: three attributes, 24 authored development scenarios, six supported facts, six denials and twelve unresolved cases. Three unresolved cases contain conflicting evidence. Laya recovered 11/12 explicit facts; DeBERTa NLI and Kev recovered 12/12. Their unsupported assertions were nevertheless 9/12, 7/12 and 6/12. A frozen literal baseline recovered 9/12 facts with no unsupported assertions and 21/24 overall agreement. Its conservative quote/apostrophe guard limits what that comparison establishes. [Evidence E09](evidence.qmd#e09-bounded-native-robustness)
+
+![Canonical results separate explicit fact recovery from unsupported assertions.](assets/canonical-outcomes.png)
+
+Each canonical lane then received 108 transformed requests from those same 24 groups. Exact repetition changed zero labels out of 24 for every lane, while preserving ten Laya errors, seven NLI errors and six Kev errors. Repeatability here means the same immediate answer, including the same mistake; it establishes neither correctness nor long-term stability.
+
+<!-- block: ch03-diagram-03 -->
+
+[]{#ch03-diagram-03}
+
+
+```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
+    accTitle: Repeating an answer does not validate its evidence
+    accDescr: A repeated request can return the same label, which may be correct or preserve an original error. Separate evidence changes probe whether the answer follows the right source and subject.
+    Request["Repeat request"] --> Same["Same label"]
+    Same --> Correct["Correct answer retained"]
+    Same --> Error["Original error retained"]
+    Edit["Change evidence or subject"] --> Scope["Test evidence attribution"]
+```
+Diagram: A stability check and an attribution check answer different questions.
+
+<!-- block: ch03-012 -->
+
+[]{#ch03-012}
+
+
+DeBERTa reached the correct destination on all 24 complete counterfactual evidence edits, but only 17/24 pairs had both a correct source and destination. It also returned unresolved after all six support removals. Those are useful observations, not a minimal-negation causal test: complete evidence replacements change more than a single logical operator.
+
+Attribution remained fragile. Subject changes produced errors on 6/6 NLI cases and 5/6 for each other lane. Distractors produced 16/24 NLI errors versus 3/24 for Kev. Removing support produced 4/6 Laya errors and 1/6 Kev errors. The architectures already perform useful language operations, but this fixture exposes failures in whose evidence counts and which evidence is irrelevant. It does not prove a bag-of-words mechanism or a capacity limit.
+
+![Robustness endpoint errors, with transformation-specific denominators and dependent scenario groups.](assets/robustness-endpoints.png)
