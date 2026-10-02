@@ -1,0 +1,116 @@
+---
+title: "11. When a perfect development rule did not travel"
+---
+
+
+<!-- block: ch11-001 -->
+
+[]{#ch11-001}
+
+
+
+<!-- block: ch11-002 -->
+
+[]{#ch11-002}
+
+
+The prompt experiments taught me that a bounded answer can be perfectly valid as a shape and still be unsupported by the job description. I wanted to learn whether a small trainable readout would do better without paying for generated reasoning. I froze a local sentence encoder and trained small heads over its representations. This was head training, not fine-tuning the pretrained encoder. It cost little enough to test linear, MLP, interaction, pooling, routing and bounded shared-block recurrence under one protocol. [Evidence E10](evidence.qmd#e10-frozen-head-and-prior-holdout)
+
+<!-- block: ch11-003 -->
+
+[]{#ch11-003}
+
+
+I set a joint development screen: fewer than or equal to 5% unsupported assertions on unresolved cases *and* at least 80% recall of both stated support and stated denial. A model that says “unknown” to everything passes only the first half; it does no semantic work. Across sixteen registered fits on grouped synthetic TRAIN/VAL, no head passed both halves. Some learned useful polarity on literal examples, but the ungrounded assertions persisted. Shared recurrent blocks at two and four steps were actually tried at one seed; they did not monotonically improve risk. That is an inconclusive small experiment, not a verdict on TRM or recurrence generally. [Evidence E10](evidence.qmd#e10-frozen-head-and-prior-holdout)
+
+<!-- block: ch11-diagram-01 -->
+
+[]{#ch11-diagram-01}
+
+
+```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
+    accTitle: A safety-only improvement is not a useful sensor
+    accDescr: The frozen encoder feeds several small heads. Each must meet both unsupported-assertion and useful-recall gates; none did in the synthetic development pilot.
+    Encoder["Frozen language encoder"] --> Heads["Small decision heads"]
+    Heads --> Risk["Few unsupported assertions?"]
+    Heads --> Recall["Enough stated facts recovered?"]
+    Risk --> Joint["Joint eligibility gate"]
+    Recall --> Joint
+    Joint --> Result["No eligible head"]
+```
+Diagram: The cheap experiment found some task signal, but no current head earned the combination the workflow needs.
+
+<!-- block: ch11-004 -->
+
+[]{#ch11-004}
+
+
+I then tried an engineering prior, not another model family. A small Python rule would assert only when it found an explicit role-scoped cue; a consensus variant would require the fixed head to agree. This separates two ideas: a model can recognize wording, while deterministic code can demand a traceable condition before using that recognition. The rule could still fail through narrow vocabulary, mistaken scope or excessive abstention. I used development examples to correct negation and scope behavior once, froze the resulting rule and checkpoint, and reserved independently authored cases for a one-shot test.
+
+<!-- block: ch11-005 -->
+
+[]{#ch11-005}
+
+
+The frozen rule looked spectacular on the familiar synthetic validation grammar: 24/24 supported facts, 24/24 denials, zero assertions on 96 unresolved rows. That was precisely the point where I needed independent wording. The validation set contained only three scenario families per substantive condition, then repeated each through fictional names and distractor variants. Repetition makes 144 rows, not 144 independent tests. A nearly perfect row score can mean the rule learned the author's phrasing. [Evidence E10](evidence.qmd#e10-frozen-head-and-prior-holdout)
+
+<!-- block: ch11-diagram-02 -->
+
+[]{#ch11-diagram-02}
+
+
+```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart LR
+    accTitle: Independent wording reverses a perfect development impression
+    accDescr: The frozen deterministic rule gets all substantive validation rows right, but on a one-shot independently authored synthetic holdout it gets zero of 24 supports and four of 24 denials. No tuning on the holdout follows.
+    VAL["Template VAL: 24 support + 24 denial recovered"] --> Freeze["Freeze code, model and evaluator"]
+    Freeze --> TEST["Independent one-shot holdout"]
+    TEST --> Collapse["0/24 support, 4/24 denial"]
+    Collapse --> Stop["Do not promote or tune on TEST"]
+```
+Diagram: Freezing before held-out prediction kept the development success falsifiable.
+
+<!-- block: ch11-006 -->
+
+[]{#ch11-006}
+
+
+The held-out result was harsh. Among 144 dependent cases in 18 scenario families, the rule recovered no support facts and four denials; the fixed model recovered no substantive facts and made one unsupported assertion; agreement returned no substantive answer at all. Every option failed useful recall. “Zero unsupported answers” for the hybrid was the abstain-all baseline in disguise. An independent audit confirmed the primary joins and counts. It also caught one reporting-only defect: a conflict slice had been named differently in the locked scorer, making its aggregate denominator wrong. The already stored condition slice establishes zero conflict assertions across 24 cases; the primary scores were unaffected, and the locked release was not rerun. [Evidence E10](evidence.qmd#e10-frozen-head-and-prior-holdout)
+
+<!-- block: ch11-007 -->
+
+[]{#ch11-007}
+
+
+Only after the release could I inspect examples for an explanation. The new passages were roughly three times longer than validation examples on average and often expressed a fact across sentences, with a pronoun referring to the applicant. My frozen rule required the role and company beside a narrow lexical cue and treated mixed cues conservatively. That makes the collapse intelligible, but it does not isolate length, pronouns or distractors as a cause. Growing regexes on this now-known test would turn it into another development set. The proxy references are model-origin reviews of synthetic cases, not human gold; the result is strong evidence against *these configurations on this holdout*, not a deployment-rate estimate for real job adverts.
+
+<!-- block: ch11-008 -->
+
+[]{#ch11-008}
+
+
+The next engineering landscape is therefore simpler. Keep the Python authority boundary. Improve source diversity, evidence segmentation and entity/claim binding before adding more internal computation. Test a future candidate at matched risk *and* useful coverage against the same abstain-all and deterministic baselines, with independent adjudication where the decision matters. Recurrence remains a research direction because the one-seed T2/T4 pilot was inconclusive; internal adapters and pruning stay behind dependencies. The existing holdout is now inspected and cannot validate a repaired sensor. Any new study needs a new split and a new preregistered confirmation. Nothing from this batch enters the active job-search workflow.
+
+<!-- block: ch11-diagram-03 -->
+
+[]{#ch11-diagram-03}
+
+
+```{mermaid}
+%%| fig-responsive: false
+%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart TD
+    accTitle: The next research order follows the failure, not model novelty
+    accDescr: Source-diverse reviewed examples lead to explicit evidence and entity binding, then simple baselines and a new locked test. Only a useful primitive justifies extra latent computation or internal adaptation.
+    Data["Source-diverse reviewed examples"] --> Binding["Evidence and entity binding"]
+    Binding --> Baselines["Simple baselines + selective risk"]
+    Baselines --> NewTest["New locked confirmation"]
+    NewTest -->|"Useful and safe"| Adapt["Consider extra latent compute or adaptation"]
+    NewTest -->|"Fails"| Diagnose["Record failure, keep Python fallback"]
+```
+Diagram: The next experiment must repair a measured seam before a more expensive architecture can claim value.

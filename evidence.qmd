@@ -252,6 +252,26 @@ Conflict assertions are a subset of unresolved assertions. The literal baseline 
 
 Repeated labels disagreed on 0/24 for each canonical lane, retaining 10/7/6 endpoint errors for Laya/NLI/Kev. NLI counterfactual destinations were correct on 24/24, but both source and destination were correct on 17/24. Support removal errors were 4/6, 0/6, 1/6; subject-change errors 5/6, 6/6, 5/6 respectively. NLI distractor errors were 16/24; Kev's were 3/24. These dependent development diagnostics do not establish production reliability, minimal-negation causality, a capacity limit or a statistically superior model.
 
+<!-- block: evidence-033 -->
+
+[]{#evidence-033}
+
+
+## E10: Frozen-head and prior holdout
+
+Private canonical source records: frozen-head pilot, heuristic-prior development and one-shot independent holdout, all dated 2026-10-02. These records are not part of the public book projection. A frozen local MiniLM encoder fed sixteen registered small-head fits on synthetic grouped TRAIN/VAL (36/18 template families; 288/144 dependent rows). None met the joint exploratory screen of no more than 5% unsupported assertions on unknown references and at least 80% recall for both support and denial. T2/T4 shared recurrence and untied T4 were one-seed diagnostics, not an architectural verdict. The head-pilot TEST stayed unopened.
+
+The V2 Python prior was frozen after one development correction. On familiar VAL phrasing it made 0/96 unsupported assertions and recovered 24/24 support plus 24/24 denial. A separate author produced 18 new synthetic holdout families (144 dependent rows); one label-free prediction and one provisional-reference scoring release followed. The resulting counts were:
+
+| Holdout comparator | Unsupported /96 unresolved | Support /24 | Denial /24 | Coverage /144 |
+|---|---:|---:|---:|---:|
+| Abstain-all | 0 | 0 | 0 | 0 |
+| Fixed nonrecurrent T1 | 1 | 0 | 0 | 1 |
+| Heuristic V2 | 0 | 0 | 4 | 4 |
+| Consensus | 0 | 0 | 0 | 0 |
+
+All fail useful recall. Independent audit confirmed exact joins, split non-overlap and primary counts. A locked-scorer condition alias made its *aggregate* conflict denominator zero; the already saved condition slice has 24 conflicts and zero assertions for all comparators. No rerun or tuning followed. All references remain independently model-reviewed proposals, not human gold; three families per condition and repeated variants prohibit row-IID or real-world safety estimates. The held-out wording was longer and structurally different, but causal attribution of the collapse is unresolved. No component was promoted.
+
 <!-- block: evidence-024 -->
 
 []{#evidence-024}
@@ -295,10 +315,10 @@ Diagram: Future-work IDs name proposed evidence tasks; the ledger does not treat
 | PROMPT-01 | Replication on independent mechanism families and adjudicated task data | Initial expanded study completed in E06; mixed/null results and one small gain need broader confirmation |
 | JUDGE-01 | Spark target isolation, atomic dimensions and citation separation | New grouped protocol; reused pilot cards are development diagnostics |
 | DATA-01 | Usable, disputed, missing and invalid labels by dimension | Retained-record eligibility audit and privacy review; candidate data only |
-| TRAIN-01 | Learnability and end-to-end adaptation feasibility | Validated supervision, grouped splits, baselines and a reviewed training protocol; deferred |
+| TRAIN-01 | Source-diverse learnability and end-to-end adaptation feasibility | E10 completed a small synthetic frozen-head pilot, not encoder adaptation or realistic task certification; requires reviewed naturalistic supervision and a new holdout |
 | GATE-01 | Consequence-specific error budget and minimum useful coverage | Consuming policy and sufficient independent adjudication; no invented threshold |
 | EVAL-02 | Explicit entity, source and quotation attribution controls, then independent grouped replication | Proposed development protocol informed by E09; freeze controls and selection before independent replication; not run |
-| LATENT-01 | Frozen-encoder linear/MLP and capacity-matched nonrecurrent heads versus a TRM head | Conditional on reviewed training data and a reviewed protocol; proposed comparison only, no training started |
+| LATENT-01 | Replicate bounded recurrence against nonrecurrent controls on diverse language | E10 tried one-seed shared T2/T4 and untied T4 without an eligible sensor; multi-seed/new-source mechanism claim deferred |
 
 <!-- block: evidence-027 -->
 

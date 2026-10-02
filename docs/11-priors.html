@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9. When training would be justified – A Testable Local Semantic Layer</title>
+<title>11. When a perfect development rule did not travel – A Testable Local Semantic Layer</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10-gates.html" rel="next">
-<link href="./08-supervision.html" rel="prev">
+<link href="./evidence.html" rel="next">
+<link href="./10-gates.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -92,7 +92,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09-training.html"><span class="chapter-title">9. When training would be justified</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11-priors.html"><span class="chapter-title">11. When a perfect development rule did not travel</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -171,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09-training.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">9. When training would be justified</span></a>
+  <a href="./09-training.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9. When training would be justified</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11-priors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11. When a perfect development rule did not travel</span></a>
+  <a href="./11-priors.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">11. When a perfect development rule did not travel</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -202,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">9. When training would be justified</span></h1>
+<h1 class="title"><span class="chapter-title">11. When a perfect development rule did not travel</span></h1>
 </div>
 
 
@@ -219,22 +219,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- block: ch09-001 -->
-<p><span id="ch09-001"></span></p>
-<!-- block: ch09-002 -->
-<p><span id="ch09-002"></span></p>
-<p>No task fine-tuning has started. That status is compatible with serious training research: I can inspect an upstream recipe, measure optimizer memory and design candidate supervision without having trained a useful task model. Keeping those activities separate prevents a feasibility result from becoming a performance claim.</p>
-<!-- block: ch09-003 -->
-<p><span id="ch09-003"></span></p>
-<p>My first training question would be whether the existing representations already contain a distinction that a new head can learn. Head-only adaptation freezes the reader and changes the decision boundary. A negative result would be informative only under a competent training setup and adequate supervision; it would not automatically prove the representation contains no useful signal. A positive result would still need grouped confirmation and comparison with the unchanged checkpoint.</p>
-<!-- block: ch09-004 -->
-<p><span id="ch09-004"></span></p>
-<p>LoRA offers a different hypothesis: modest changes to selected projections may adapt the reader without updating every weight. It is a choice about trainable parameters, not a guarantee of better generalization or lower harmful-error risk. Full-parameter training permits broader changes at a greater optimization and memory cost. The comparison should follow the diagnosed error and resource budget, rather than treating head-only, LoRA and full training as a mandatory progression. <a href="https://huggingface.co/docs/peft/main/en/developer_guides/lora">Official LoRA guide</a></p>
-<!-- block: ch09-005 -->
-<p><span id="ch09-005"></span></p>
-<p>I am particularly interested in attention-projection adaptation. Query/key changes affect routing; including value/output projections also changes what information is transported and combined. “Attention-only” is therefore insufficient specification. I would record the exact layers and projections, freeze everything else deliberately and compare against a head-only baseline. Attention maps are input-dependent activations, not persistent parameters that can simply be edited into a reusable policy.</p>
-<!-- block: ch09-diagram-01 -->
-<p><span id="ch09-diagram-01"></span></p>
+<!-- block: ch11-001 -->
+<p><span id="ch11-001"></span></p>
+<!-- block: ch11-002 -->
+<p><span id="ch11-002"></span></p>
+<p>The prompt experiments taught me that a bounded answer can be perfectly valid as a shape and still be unsupported by the job description. I wanted to learn whether a small trainable readout would do better without paying for generated reasoning. I froze a local sentence encoder and trained small heads over its representations. This was head training, not fine-tuning the pretrained encoder. It cost little enough to test linear, MLP, interaction, pooling, routing and bounded shared-block recurrence under one protocol. <a href="./evidence.html#e10-frozen-head-and-prior-holdout">Evidence E10</a></p>
+<!-- block: ch11-003 -->
+<p><span id="ch11-003"></span></p>
+<p>I set a joint development screen: fewer than or equal to 5% unsupported assertions on unresolved cases <em>and</em> at least 80% recall of both stated support and stated denial. A model that says “unknown” to everything passes only the first half; it does no semantic work. Across sixteen registered fits on grouped synthetic TRAIN/VAL, no head passed both halves. Some learned useful polarity on literal examples, but the ungrounded assertions persisted. Shared recurrent blocks at two and four steps were actually tried at one seed; they did not monotonically improve risk. That is an inconclusive small experiment, not a verdict on TRM or recurrence generally. <a href="./evidence.html#e10-frozen-head-and-prior-holdout">Evidence E10</a></p>
+<!-- block: ch11-diagram-01 -->
+<p><span id="ch11-diagram-01"></span></p>
 <div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -242,32 +236,60 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
-accTitle: Possible training routes
-accDescr: A diagnosed error can motivate alternative interventions: head-only adaptation changes the decision boundary, LoRA changes selected projections, and full training changes all weights.
-    A["Diagnosed error"] --&gt; B["Head only: new boundary"]
-    A --&gt; C["LoRA: selected projections"]
-    A --&gt; D["Full: all weights"]
+    accTitle: A safety-only improvement is not a useful sensor
+    accDescr: The frozen encoder feeds several small heads. Each must meet both unsupported-assertion and useful-recall gates; none did in the synthetic development pilot.
+    Encoder["Frozen language encoder"] --&gt; Heads["Small decision heads"]
+    Heads --&gt; Risk["Few unsupported assertions?"]
+    Heads --&gt; Recall["Enough stated facts recovered?"]
+    Risk --&gt; Joint["Joint eligibility gate"]
+    Recall --&gt; Joint
+    Joint --&gt; Result["No eligible head"]
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>Diagram: These are alternative hypotheses to match to an error and resource budget, not a demonstrated sequence or result.</p>
-<!-- block: ch09-006 -->
-<p><span id="ch09-006"></span></p>
-<p>The inspected upstream Laya notebook uses full-parameter training with separate encoder and head learning rates, checkpointing and later calibration work. It is an explanatory reference, not a verified reconstruction of every released checkpoint’s training history. Nor does its use of two GPUs mean their memory becomes one shared pool under ordinary distributed data parallelism. Local feasibility needs a local measurement. <a href="https://github.com/NandhaKishorM/laya/blob/main/notebooks/laya_finetune_typed_decisions_2xT4_kaggle.ipynb">Upstream notebook</a></p>
-<!-- block: ch09-007 -->
-<p><span id="ch09-007"></span></p>
-<p>A synthetic steady-state optimizer probe did complete on the 12 GB GPU. With 1,024-token rows, accumulation over four micro-batches, checkpointing, FP32 weights/gradients/Adam state and FP16 autocast with loss scaling, the eight-row micro-batch peaked at 8.2186 GiB allocated and 8.9062 GiB reserved. It completed a second optimizer update so persistent optimizer state was included. This made local full-parameter experimentation plausible. <a href="./evidence.html#e08-memory-feasibility">Evidence E08</a></p>
-<!-- block: ch09-008 -->
-<p><span id="ch09-008"></span></p>
-<p>The probe did not include the complete upstream auxiliary exploration, all data-pipeline variation, evaluation passes or checkpoint writes. Its synthetic shape was not a real task-learning run. A short end-to-end smoke test would still be necessary before a longer experiment, with exact trainable parameters, effective batch size, warmup, gradient clipping, loss scaling, loss logging and versioned checkpoints recorded. Code and configuration must be snapshotted before each run.</p>
-<!-- block: ch09-009 -->
-<p><span id="ch09-009"></span></p>
-<p>Training also needs a target worth learning. Repeated errors, sufficiently trustworthy supervision, grouped splits and a suitable baseline must precede the optimizer. Calibration data must remain separate from training and final evaluation. Any teacher evidence supplied only during training must be absent from the deployment evaluation unless the deployed system truly includes that teacher. Otherwise the experiment answers the wrong engineering question.</p>
-<!-- block: ch09-diagram-02 -->
-<p><span id="ch09-diagram-02"></span></p>
+<p>Diagram: The cheap experiment found some task signal, but no current head earned the combination the workflow needs.</p>
+<!-- block: ch11-004 -->
+<p><span id="ch11-004"></span></p>
+<p>I then tried an engineering prior, not another model family. A small Python rule would assert only when it found an explicit role-scoped cue; a consensus variant would require the fixed head to agree. This separates two ideas: a model can recognize wording, while deterministic code can demand a traceable condition before using that recognition. The rule could still fail through narrow vocabulary, mistaken scope or excessive abstention. I used development examples to correct negation and scope behavior once, froze the resulting rule and checkpoint, and reserved independently authored cases for a one-shot test.</p>
+<!-- block: ch11-005 -->
+<p><span id="ch11-005"></span></p>
+<p>The frozen rule looked spectacular on the familiar synthetic validation grammar: 24/24 supported facts, 24/24 denials, zero assertions on 96 unresolved rows. That was precisely the point where I needed independent wording. The validation set contained only three scenario families per substantive condition, then repeated each through fictional names and distractor variants. Repetition makes 144 rows, not 144 independent tests. A nearly perfect row score can mean the rule learned the author’s phrasing. <a href="./evidence.html#e10-frozen-head-and-prior-holdout">Evidence E10</a></p>
+<!-- block: ch11-diagram-02 -->
+<p><span id="ch11-diagram-02"></span></p>
+<div class="cell" data-fig-responsive="false" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
+flowchart LR
+    accTitle: Independent wording reverses a perfect development impression
+    accDescr: The frozen deterministic rule gets all substantive validation rows right, but on a one-shot independently authored synthetic holdout it gets zero of 24 supports and four of 24 denials. No tuning on the holdout follows.
+    VAL["Template VAL: 24 support + 24 denial recovered"] --&gt; Freeze["Freeze code, model and evaluator"]
+    Freeze --&gt; TEST["Independent one-shot holdout"]
+    TEST --&gt; Collapse["0/24 support, 4/24 denial"]
+    Collapse --&gt; Stop["Do not promote or tune on TEST"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>Diagram: Freezing before held-out prediction kept the development success falsifiable.</p>
+<!-- block: ch11-006 -->
+<p><span id="ch11-006"></span></p>
+<p>The held-out result was harsh. Among 144 dependent cases in 18 scenario families, the rule recovered no support facts and four denials; the fixed model recovered no substantive facts and made one unsupported assertion; agreement returned no substantive answer at all. Every option failed useful recall. “Zero unsupported answers” for the hybrid was the abstain-all baseline in disguise. An independent audit confirmed the primary joins and counts. It also caught one reporting-only defect: a conflict slice had been named differently in the locked scorer, making its aggregate denominator wrong. The already stored condition slice establishes zero conflict assertions across 24 cases; the primary scores were unaffected, and the locked release was not rerun. <a href="./evidence.html#e10-frozen-head-and-prior-holdout">Evidence E10</a></p>
+<!-- block: ch11-007 -->
+<p><span id="ch11-007"></span></p>
+<p>Only after the release could I inspect examples for an explanation. The new passages were roughly three times longer than validation examples on average and often expressed a fact across sentences, with a pronoun referring to the applicant. My frozen rule required the role and company beside a narrow lexical cue and treated mixed cues conservatively. That makes the collapse intelligible, but it does not isolate length, pronouns or distractors as a cause. Growing regexes on this now-known test would turn it into another development set. The proxy references are model-origin reviews of synthetic cases, not human gold; the result is strong evidence against <em>these configurations on this holdout</em>, not a deployment-rate estimate for real job adverts.</p>
+<!-- block: ch11-008 -->
+<p><span id="ch11-008"></span></p>
+<p>The next engineering landscape is therefore simpler. Keep the Python authority boundary. Improve source diversity, evidence segmentation and entity/claim binding before adding more internal computation. Test a future candidate at matched risk <em>and</em> useful coverage against the same abstain-all and deterministic baselines, with independent adjudication where the decision matters. Recurrence remains a research direction because the one-seed T2/T4 pilot was inconclusive; internal adapters and pruning stay behind dependencies. The existing holdout is now inspected and cannot validate a repaired sensor. Any new study needs a new split and a new preregistered confirmation. Nothing from this batch enters the active job-search workflow.</p>
+<!-- block: ch11-diagram-03 -->
+<p><span id="ch11-diagram-03"></span></p>
 <div class="cell" data-fig-responsive="false" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -275,25 +297,20 @@ accDescr: A diagnosed error can motivate alternative interventions: head-only ad
 <div>
 <pre class="mermaid mermaid-js">%%{init: {"flowchart": {"useMaxWidth": false}}}%%
 flowchart TD
-accTitle: Dependencies before a longer run
-accDescr: Before a longer task run, a persistent error needs trustworthy supervision, grouped splits, and a suitable baseline; those prerequisites lead to a short end-to-end smoke test first.
-    A["Persistent error"] --&gt; B["Trustworthy supervision"]
-    A --&gt; C["Grouped splits"]
-    A --&gt; D["Suitable baseline"]
-    B --&gt; E["Short smoke test"]
-    C --&gt; E
-    D --&gt; E
-    E --&gt; F["Longer task run"]
+    accTitle: The next research order follows the failure, not model novelty
+    accDescr: Source-diverse reviewed examples lead to explicit evidence and entity binding, then simple baselines and a new locked test. Only a useful primitive justifies extra latent computation or internal adaptation.
+    Data["Source-diverse reviewed examples"] --&gt; Binding["Evidence and entity binding"]
+    Binding --&gt; Baselines["Simple baselines + selective risk"]
+    Baselines --&gt; NewTest["New locked confirmation"]
+    NewTest --&gt;|"Useful and safe"| Adapt["Consider extra latent compute or adaptation"]
+    NewTest --&gt;|"Fails"| Diagnose["Record failure, keep Python fallback"]
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
-<p>Diagram: These are prerequisites for a proposed experiment; no task-training run has started.</p>
-<!-- block: ch09-010 -->
-<p><span id="ch09-010"></span></p>
-<p>The objective is not simply higher agreement. It is fewer harmful accepted assertions at useful coverage, with uncertainty and cost visible. If a simpler prompt or deterministic check meets that contract, training may be unnecessary. <a href="./10-gates.html">Chapter 10</a> makes the acceptance decision explicit.</p>
+<p>Diagram: The next experiment must repair a measured seam before a more expensive architecture can claim value.</p>
 
 
 
@@ -700,13 +717,13 @@ accDescr: Before a longer task run, a persistent error needs trustworthy supervi
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./08-supervision.html" class="pagination-link" aria-label="8. Build examples worth learning from">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">8. Build examples worth learning from</span></span>
+      <a href="./10-gates.html" class="pagination-link" aria-label="10. Earn a place in the harness">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">10. Earn a place in the harness</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./10-gates.html" class="pagination-link" aria-label="10. Earn a place in the harness">
-        <span class="nav-page-text"><span class="chapter-title">10. Earn a place in the harness</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./evidence.html" class="pagination-link" aria-label="Evidence and future-work ledger">
+        <span class="nav-page-text"><span class="chapter-title">Evidence and future-work ledger</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

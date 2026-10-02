@@ -36,7 +36,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10-gates.html" rel="prev">
+<link href="./11-priors.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -180,6 +180,11 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./11-priors.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11. When a perfect development rule did not travel</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./evidence.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Evidence and future-work ledger</span></a>
   </div>
 </li>
@@ -202,6 +207,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#e07-spark-pilot" id="toc-e07-spark-pilot" class="nav-link" data-scroll-target="#e07-spark-pilot">E07: Spark pilot</a></li>
   <li><a href="#e08-memory-feasibility" id="toc-e08-memory-feasibility" class="nav-link" data-scroll-target="#e08-memory-feasibility">E08: Memory feasibility</a></li>
   <li><a href="#e09-bounded-native-robustness" id="toc-e09-bounded-native-robustness" class="nav-link" data-scroll-target="#e09-bounded-native-robustness">E09: Bounded native robustness</a></li>
+  <li><a href="#e10-frozen-head-and-prior-holdout" id="toc-e10-frozen-head-and-prior-holdout" class="nav-link" data-scroll-target="#e10-frozen-head-and-prior-holdout">E10: Frozen-head and prior holdout</a></li>
   <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future work</a></li>
   </ul>
 </nav>
@@ -501,6 +507,62 @@ accDescr: Four fixed development conditions support a frozen selection. Baseline
 <p><span id="evidence-032"></span></p>
 <p>Conflict assertions are a subset of unresolved assertions. The literal baseline matches 21/24 references with a narrow conservative quote/apostrophe guard. Standard NLI agreement excludes the three conflicts, giving a 21-case denominator; the overall 24-case safety stress includes them. This reporting distinction never overrides a prediction using the reference label. Kev bounded QA recovered 5/6 support and 6/6 denial, with 3/12 unresolved assertions and zero conflict assertions; no interface passed the frozen gate, and the conditional 324-request extension did not run.</p>
 <p>Repeated labels disagreed on 0/24 for each canonical lane, retaining 10/7/6 endpoint errors for Laya/NLI/Kev. NLI counterfactual destinations were correct on 24/24, but both source and destination were correct on 17/24. Support removal errors were 4/6, 0/6, 1/6; subject-change errors 5/6, 6/6, 5/6 respectively. NLI distractor errors were 16/24; Kev’s were 3/24. These dependent development diagnostics do not establish production reliability, minimal-negation causality, a capacity limit or a statistically superior model.</p>
+<!-- block: evidence-033 -->
+<p><span id="evidence-033"></span></p>
+</section>
+<section id="e10-frozen-head-and-prior-holdout" class="level2">
+<h2 class="anchored" data-anchor-id="e10-frozen-head-and-prior-holdout">E10: Frozen-head and prior holdout</h2>
+<p>Private canonical source records: frozen-head pilot, heuristic-prior development and one-shot independent holdout, all dated 2026-10-02. These records are not part of the public book projection. A frozen local MiniLM encoder fed sixteen registered small-head fits on synthetic grouped TRAIN/VAL (36/18 template families; 288/144 dependent rows). None met the joint exploratory screen of no more than 5% unsupported assertions on unknown references and at least 80% recall for both support and denial. T2/T4 shared recurrence and untied T4 were one-seed diagnostics, not an architectural verdict. The head-pilot TEST stayed unopened.</p>
+<p>The V2 Python prior was frozen after one development correction. On familiar VAL phrasing it made 0/96 unsupported assertions and recovered 24/24 support plus 24/24 denial. A separate author produced 18 new synthetic holdout families (144 dependent rows); one label-free prediction and one provisional-reference scoring release followed. The resulting counts were:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Holdout comparator</th>
+<th style="text-align: right;">Unsupported /96 unresolved</th>
+<th style="text-align: right;">Support /24</th>
+<th style="text-align: right;">Denial /24</th>
+<th style="text-align: right;">Coverage /144</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Abstain-all</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td>Fixed nonrecurrent T1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>Heuristic V2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td>Consensus</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>All fail useful recall. Independent audit confirmed exact joins, split non-overlap and primary counts. A locked-scorer condition alias made its <em>aggregate</em> conflict denominator zero; the already saved condition slice has 24 conflicts and zero assertions for all comparators. No rerun or tuning followed. All references remain independently model-reviewed proposals, not human gold; three families per condition and repeated variants prohibit row-IID or real-world safety estimates. The held-out wording was longer and structurally different, but causal attribution of the collapse is unresolved. No component was promoted.</p>
 <!-- block: evidence-024 -->
 <p><span id="evidence-024"></span></p>
 </section>
@@ -577,8 +639,8 @@ accDescr: A missing-evidence item needs a bounded protocol and resources before 
 </tr>
 <tr class="odd">
 <td>TRAIN-01</td>
-<td>Learnability and end-to-end adaptation feasibility</td>
-<td>Validated supervision, grouped splits, baselines and a reviewed training protocol; deferred</td>
+<td>Source-diverse learnability and end-to-end adaptation feasibility</td>
+<td>E10 completed a small synthetic frozen-head pilot, not encoder adaptation or realistic task certification; requires reviewed naturalistic supervision and a new holdout</td>
 </tr>
 <tr class="even">
 <td>GATE-01</td>
@@ -592,8 +654,8 @@ accDescr: A missing-evidence item needs a bounded protocol and resources before 
 </tr>
 <tr class="even">
 <td>LATENT-01</td>
-<td>Frozen-encoder linear/MLP and capacity-matched nonrecurrent heads versus a TRM head</td>
-<td>Conditional on reviewed training data and a reviewed protocol; proposed comparison only, no training started</td>
+<td>Replicate bounded recurrence against nonrecurrent controls on diverse language</td>
+<td>E10 tried one-seed shared T2/T4 and untied T4 without an eligible sensor; multi-seed/new-source mechanism claim deferred</td>
 </tr>
 </tbody>
 </table>
@@ -1007,8 +1069,8 @@ accDescr: A missing-evidence item needs a bounded protocol and resources before 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10-gates.html" class="pagination-link" aria-label="10. Earn a place in the harness">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">10. Earn a place in the harness</span></span>
+      <a href="./11-priors.html" class="pagination-link" aria-label="11. When a perfect development rule did not travel">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">11. When a perfect development rule did not travel</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
