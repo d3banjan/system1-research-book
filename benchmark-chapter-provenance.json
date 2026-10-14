@@ -1,0 +1,18 @@
+[
+  {
+    "blocks": [
+      "existing-001",
+      "existing-002",
+      "existing-003",
+      "existing-004",
+      "existing-005",
+      "existing-006",
+      "existing-007",
+      "existing-008",
+      "existing-009",
+      "existing-010"
+    ],
+    "sha256": "90da2d4c8fc314dc861a47f492be1a4243ba067e1a75fd12c4eee8a75ab41c7f",
+    "source": "02-existing-solutions.md"
+  }
+]

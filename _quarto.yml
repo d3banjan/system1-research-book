@@ -10,6 +10,7 @@
     "chapters": [
       "index.qmd",
       "01-workflow.qmd",
+      "02-existing-solutions.qmd",
       "02-instrument.qmd",
       "03-diagnostics.qmd",
       "04-landscape.qmd",

@@ -1,0 +1,95 @@
+---
+title: "Benchmark existing solutions before changing the model"
+---
+
+
+<!-- block: existing-001 -->
+
+[]{#existing-001}
+
+
+
+<!-- block: existing-002 -->
+
+[]{#existing-002}
+
+
+Before building a new decision layer, ask whether an existing one already does the job. An allowed answer is not enough. A useful instrument must detect supporting evidence, recognize contradiction, and leave genuinely missing information unresolved. These requirements can pull in different directions: a cautious model can avoid unsupported assertions by missing useful evidence.
+
+<!-- block: existing-003 -->
+
+[]{#existing-003}
+
+
+We therefore held the supplied text and three-way question fixed and compared existing systems without task fine-tuning. StartLux 2B, StartLux 4B and LiquidAI d1 used their native decision interfaces on an RTX 3060 with 12 GB VRAM. Hosted Jev used a native decision API. Hosted Gemma 4 31B returned a generated option label. The last interface is deliberately a comparator, not evidence that a generative model and a native readout are the same instrument.
+
+<!-- block: existing-004 -->
+
+[]{#existing-004}
+
+
+The consolidated English study contained 8,211 development cases: 3,200 ANLI cases, 5,008 XNLI cases and three additional AfriXNLI English cases after overlap handling. Shared text pairs were not counted twice; a conflicting XNLI pair was quarantined rather than relabeled. The 4,525 exact-premise groups are an operational grouping, not proof of statistical independence. Existing compatible predictions were reused; reuse is not a fresh replication.
+
+<!-- block: existing-005 -->
+
+[]{#existing-005}
+
+
+| Model | Entailment accuracy (8,211) | Intent accuracy (200) | Valid / planned outputs |
+| --- | ---: | ---: | ---: |
+| StartLux 2B | 75.83% | — | 8,211 / 8,211 |
+| StartLux 4B | 81.98% | — | 8,211 / 8,211 |
+| LiquidAI d1-3B | 76.67% | — | 8,211 / 8,211 |
+| Jev | 82.80% | — | 8,209 / 8,211 |
+| Gemma 4 31B | 81.63% | — | 8,209 / 8,211 |
+| THIS/THAT 1.2 | 72.67% | — | 8,211 / 8,211 |
+| GLiClass small v1 | — | 6.00% | 200 / 200 |
+| GLiFormer base v1 | — | 51.00% | 200 / 200 |
+
+This is one study and one model list, with task-specific columns. A dash means not evaluated on that leg, not zero accuracy. Invalid outcomes remain in the planned denominator. These are development results, not untouched real-job confirmation, architectural isolation or evidence of equivalence. Known training-family overlap and differing interfaces limit attribution. No system was promoted into the production workflow.
+
+<!-- block: existing-006 -->
+
+[]{#existing-006}
+
+
+The overall ranking hides different mistakes. Jev's support recall was 77.74%, denial recall 82.18%, and neutral overassertion 11.47%. Gemma recovered more supported cases (85.84% support recall), but fewer denied cases (73.14% denial recall), with neutral overassertion 14.06%. StartLux 4B reached 80.84% support recall and 80.94% denial recall, with 15.85% neutral overassertion. A deployment choice therefore needs an error budget, not only an accuracy winner.
+
+<!-- block: existing-007 -->
+
+[]{#existing-007}
+
+
+English also hid a language gap. On a separate matched multilingual development subset, StartLux 4B scored 72.50% on 320 ANLI cases and 52.22% on 1,080 AfriXNLI rows; Jev scored 74.69% and 61.57%, respectively. Gemma scored 72.81% and 61.02%. The translated rows represented only 60 underlying AfriXNLI groups across 18 languages, not 1,080 independent scenarios. On the small 60-case English slice, StartLux 4B and Jev both scored 56 correct. That tie does not establish multilingual parity or equivalence.
+
+<!-- block: existing-008 -->
+
+[]{#existing-008}
+
+
+This changes the next experiment. We should separate language coverage, contradiction recognition, abstention and task specialization before attributing a gap to attention structure or model size. A larger local model repaired many contradiction errors without removing every unsupported assertion. Structural explanations remain hypotheses until controlled comparisons distinguish training data, interface wording, precision and architecture.
+
+<!-- block: existing-009 -->
+
+[]{#existing-009}
+
+
+All eight models belong to the same study above. Clef and MiniCheck were removed by the operator because their roughly 9.53B and 7.74B releases exceeded the desired size; neither received a project quality score. Decider and Cygnet also remain excluded. The THIS/THAT release card's eligibility-rule improvements and RTX 5080 Laptop timing are publisher evidence, not project reproduction. A forked Hugging Face page/model card does not prove checkpoint ancestry. [Release card](https://huggingface.co/flock-io/this-that-model-1.2)
+
+THIS/THAT used its pinned native option-logit API with the full supplied state. Its 8,211-case English entailment run finished with 100% valid outputs, 74.53% support recall, 65.64% denial recall and 22.17% neutral overassertion. Accuracy was 10.13 percentage points below Jev on this development leg, not on the entire benchmark catalogue. The exact-premise-group bootstrap accuracy interval was 71.64–73.65%; near-source independence remains unverified. Startup-inclusive throughput was 13.7 decisions/second, with four compatible canary outputs reused. Peak PyTorch allocated/reserved VRAM was 3.55/3.61 GiB, excluding desktop and non-PyTorch allocations.
+
+The intent leg contains 200 frozen English MASSIVE cases with the original 60 option keys. GLiClass small v1 scored 12/200 (6%), and GLiFormer base v1 scored 102/200 (51%), both with 100% valid outputs. Their 60-key macro-F1 scores were 6.62% and 49.53%; classes absent from this sample receive zero. Source-group bootstrap accuracy intervals were 3.0–9.5% and 44–58%, respectively. These results concern this raw-label interface and inspected development sample; they do not establish extraction quality, universal model capability, or parity with Jev, which has no matched intent arm here.
+
+| Intent model | Startup-inclusive decisions/s | Native-call decisions/s | Peak allocated / reserved VRAM |
+| --- | ---: | ---: | ---: |
+| GLiClass small v1 | 20.7 | 59.4 | 0.59 / 0.62 GiB |
+| GLiFormer base v1 | 8.25 | 28.6 | 1.04 / 1.18 GiB |
+
+Each intent run reused three verified canary outputs and executed 197 new decisions. Startup-inclusive timings exclude pre-load snapshot preparation; native-call timings exclude adapter prechecks and output writes but include processing inside the native API. These short-run rates are not universal warm GPU-forward throughput. Full native inputs were checked against truncation. GLiFormer used the upstream supported eager-attention fallback. Required independent reviewer attempts returned no usable result, a disclosed review limitation rather than approval. No training or production promotion followed.
+
+<!-- block: existing-010 -->
+
+[]{#existing-010}
+
+
+The engineering lesson is simple: benchmark before modifying. Freeze inputs and references separately, save exact requests and outputs, preserve invalids and billing uncertainty, and score saved predictions without paying again. Keep multilingual and task-specific slices visible. Only then decide whether to retain an existing solution, narrow its role, or investigate a particular remaining gap.
